@@ -1,0 +1,202 @@
+
+alias nr_cpu='cat /proc/cpuinfo | grep processor | wc -l'
+
+########################################################
+#		Normal Routine
+########################################################
+alias ls='ls --color'
+alias ll='ls -l'
+alias li='ls -li'
+alias la='ls -A'
+alias l='ls -CF'
+alias c='cat'
+alias f='tfind'
+alias e='exit'
+alias g='grep --color'
+alias tg='tgrep --color'
+alias grep='grep --color'
+
+alias al='addr2line -e vmlinux -ipf'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
+alias tcd='cd /home/feng/ws2/projects/; cd'
+#alias tcd='cd /home/feng/android/; cd'
+alias tps='ps auxH | grep'
+alias tka='sudo killall -9'
+alias atop='sudo atop'
+alias tdmesg='sudo dmesg -c > /dev/null'
+alias tindent='indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs -cp1 '
+alias vt='vim -t'
+alias v='tvi'
+alias h='head'
+
+# Git commands alias
+alias gcp='git cherry-pick'
+alias ga='git am'
+alias gaa='git am --abort'
+alias gad='git add'
+alias gs='git status'
+alias gsw='git show'
+alias gb='git branch'
+alias gbi='git rebase -i'
+alias gc='git checkout'
+alias gd='git diff'
+#alias gd='dir=.;if ["$1" != ""]; then dir=$1;fi;cd $dir;git diff'
+alias gui='git update-index'
+alias gp='git pull --tags'
+alias gfp='git format-patch'
+alias gls='git log --pretty=format:"%h [%an] %s %cd"'
+alias tgls='git log --pretty=format:"%h [%an] %s %cd" | grep "Feng Tang"'
+alias grh='git reset --hard'
+alias gwp='find . -name "$1" | xargs git whatchanged -p '
+alias gl='git log'
+alias tgp='tsocks git pull'
+alias ga='git am'
+alias gcm='git commit -m'
+alias gcmn='git commit -m --no-verify'
+#alias gacm='git commit -a -m --no-verify'
+alias gacm='git commit -a -s --no-verify -m'
+alias gca='git commit --amend'
+
+alias grvt='git revert '
+
+
+########################################################
+#		QEMU
+########################################################
+alias sqemu='ssh -p 22222 root@127.0.0.1'
+# i386
+alias iqemu='ssh -p 5555 root@127.0.0.1'
+alias tsqemu='tloop ssh -p 22222 root@127.0.0.1'
+
+
+########################################################
+#		leveldb test
+########################################################
+
+alias db1='./db_bench --benchmarks=readrandom --num=30000000 --threads=1'
+alias db2='./db_bench --benchmarks=readrandom --num=20000000 --threads=2'
+alias db8='./db_bench --benchmarks=readrandom --num=3000000 --threads=8'
+alias db8l='./db_bench --benchmarks=readrandom --num=500000000 --threads=8'
+alias db16='./db_bench --benchmarks=readrandom --num=1000000 --threads=16'
+alias db36='./db_bench --benchmarks=readrandom --num=200000 --threads=36'
+alias db32='./db_bench --benchmarks=readrandom --num=400000 --threads=32'
+alias db48='./db_bench --benchmarks=readrandom --num=400000 --threads=48'
+alias db48l='./db_bench --benchmarks=readrandom --num=20000000 --threads=48'
+alias db64='./db_bench --benchmarks=readrandom --num=200000 --threads=64'
+
+alias db128='./db_bench --benchmarks=readrandom --num=200000 --threads=128'
+alias db128l='./db_bench --benchmarks=readrandom --num=2000000 --threads=128'
+
+alias db192='./db_bench --benchmarks=readrandom --num=200000 --threads=192'
+alias db192l='./db_bench --benchmarks=readrandom --num=2000000 --threads=192'
+
+alias psdb8='perf stat ./db_bench --benchmarks=readrandom --num=3000000 --threads=8'
+alias psdb128='perf stat ./db_bench --benchmarks=readrandom --num=200000 --threads=128'
+
+
+alias wdb2='./db_bench --benchmarks=fillrandom --num=100000 --threads=2'
+alias wdb16='./db_bench --benchmarks=fillrandom --num=100000 --threads=16'
+alias wdb36='./db_bench --benchmarks=fillrandom --num=20000 --threads=36'
+alias wdb32='./db_bench --benchmarks=fillrandom --num=40000 --threads=32'
+alias wdb64='./db_bench --benchmarks=fillrandom --num=20000 --threads=64'
+#alias wdb128='./db_bench --benchmarks=fillrandom --num=20000 --threads=128'
+
+alias wdb128='./db_bench --benchmarks=fillrandom --num=10000 --threads=128'
+alias wdb192='./db_bench --benchmarks=fillrandom --num=10000 --threads=192'
+
+alias wdb128l='./db_bench --benchmarks=fillrandom --num=300000 --threads=128'
+alias wdb192l='./db_bench --benchmarks=fillrandom --num=300000 --threads=192'
+
+alias dbrs64='./db_bench --benchmarks=readseq --num=1000000 --threads=64'
+alias dbws64='./db_bench --benchmarks=fillseq --num=50000 --threads=64'
+
+
+########################################################
+#		SSH login
+########################################################
+
+alias icx='ssh root@alek-ra-test3.sh.intel.com'
+alias ficx='ssh feng@alek-ra-test3.sh.intel.com'
+alias sicx='sshfs root@alek-ra-test3.sh.intel.com: ~/icx'
+alias sficx='sshfs feng@alek-ra-test3.sh.intel.com: ~/icx'
+
+
+alias pts='ssh root@10.239.97.88'
+alias fpts='ssh feng@10.239.97.88'
+alias ppts='ssh pnp@10.239.97.88'
+alias spts='sshfs root@10.239.97.88: ~/pts/'
+alias sfpts='sshfs feng@10.239.97.88: ~/pts/'
+alias tpts='ssh feng@10.239.97.88'
+
+alias clx='ssh feng-clx.sh.intel.com'
+alias sclx='sshfs feng-clx.sh.intel.com: ~/clx'
+
+alias adl='ssh root@feng-adl.sh.intel.com'
+alias sadl='sshfs root@feng-adl.sh.intel.com: ~/adl'
+
+
+alias olicx='ssh root@10.165.55.21'
+alias solicx='sshfs root@10.165.55.21: ~/olicx'
+alias folicx='ssh feng@10.165.55.21'
+alias sfolicx='sshfs feng@10.165.55.21: ~/olicx'
+
+icx2="10.165.57.248"
+
+alias olclx='ssh root@10.165.57.248'
+alias solclx='sshfs root@10.165.57.248: ~/olclx'
+alias folclx='ssh feng@10.165.57.248'
+alias sfolclx='sshfs feng@10.165.57.248: ~/olclx'
+
+# PTS login
+alias pts='ssh root@10.239.97.88'
+alias fpts='ssh feng@10.239.97.88'
+alias ppts='ssh pnp@10.239.97.88'
+alias spts='sshfs root@10.239.97.88: ~/pts/'
+alias sfpts='sshfs feng@10.239.97.88: ~/pts/'
+alias tpts='ssh feng@10.239.97.88'
+
+
+# Ali SPR login
+export jumper="39.105.51.111"
+alias aj='tsocks ssh root@$jumper '
+alias faj='tsocks ssh feng@$jumper '
+
+alias saj='tsocks sshfs root@$jumper: ~/ali1'
+alias saj2='tsocks sshfs feng@$jumper:/home/feng ~/ali2'
+
+# Power Lab
+alias plab='ssh powerlab'
+alias splab='sshfs powerlab: ~/powerlab/'
+
+# inn
+alias inn='ssh -p 22000 bee.sh.intel.com'
+alias sinn='sshfs -p 22000 bee.sh.intel.com: ~/inn/'
+
+########################################################
+#		Yum
+########################################################
+alias yi='yum install'
+alias ys='yum search'
+
+#alias yia='yum install git ctags dwarves ncurses ncurses-dev cmake dstat htop fuse-sshfs vim mlocate bc binutils-devel libunwind-devel numactl-devel perl-devel perl slang-devel'
+
+########################################################
+#		Apt
+########################################################
+
+#alis aia='apt install libdwarf-dev libdwarf1 flex bison libssl-dev libelf-dev libnuma-dev git dwarves ncurses ncurses-dev libunwind-dev libzstd-dev libcap-dev libperl-dev libpython-all-dev vim cmake dstat perl mlocate bc binutils-dev'
+
+
+
+
+########################################################
+#		Functions
+########################################################
+alias gplinux='git clone https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git'
+
+alias tbinupdate='cd ~/bin; git reset --hard HEAD^^^^ ; git pull'

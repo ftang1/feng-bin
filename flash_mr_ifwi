@@ -1,0 +1,6 @@
+set -x
+adb reboot bootloader && sleep 10
+fastboot flash ifwi "/home/feng/psh_ifwi/ifwi_saltbay_pr2.bin"
+fastboot flash dnx "/home/feng/psh_ifwi/ww15_dnx_fwr_saltbay_pr2.bin"
+fastboot continue
+  

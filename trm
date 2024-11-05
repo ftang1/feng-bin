@@ -1,0 +1,57 @@
+#!/bin/sh
+#if [ $# -lt 2 ]; then
+#	echo "trm Usage: trm append [dir] ... "
+#	exit 1
+#fi
+
+#set -x
+
+#append=$1
+#
+#if [ ! -e "$2" ]
+#then
+#	#echo '$2 is NULL'
+#	cwd=.
+#else
+#	#echo "\$2 is $2"
+#	cwd=$2
+#fi
+#
+##if test "$2" = ""
+##then
+##	echo "haha param 2 is NULL"
+##fi
+#
+#for i in $(ls $cwd)
+#do
+#	j=$cwd/$i
+#	if [ -d $j ]
+#	then
+#		trm $append $j
+#	fi
+#done
+#
+##ls $cwd/*.[chsS] 2>/dev/null 1>/dev/null && grep $1 $cwd/*.[chsS]
+#if ls $cwd/*.$append 2>/dev/null 1>/dev/null
+#	then rm -f $cwd/*.$append
+#fi
+#
+##ls $cwd/*.[chsS] &>/dev/null && grep $1 $cwd/*.[chsS]
+#set -x
+#rm -rf "$1"
+
+if [ ! -e "$2" ]
+then
+	#echo '$2 is NULL'
+	fdir=.
+else
+	#echo "\$2 is $2"
+	fdir=$2
+fi
+
+rm -rf $1
+
+to_be_removed=$(sudo find $fdir -name $1)
+
+#echo $a
+rm -rf $to_be_removed 

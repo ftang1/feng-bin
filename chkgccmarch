@@ -1,0 +1,3 @@
+set -x 
+ gcc -Q --help=target | grep march
+ g++ -Q --help=target | grep march

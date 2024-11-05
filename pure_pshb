@@ -1,0 +1,5 @@
+set -x
+source setupenv.sh
+cd extAPI/iap/config/projects/midas.1p/
+
+make clean && make lib && echo && echo && make

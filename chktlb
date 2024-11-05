@@ -1,0 +1,28 @@
+
+
+echo
+echo
+echo "/proc/sys/vm settings"
+echo "---------------------"
+cat /proc/meminfo | grep -i -e huge -e tlb
+
+
+echo
+echo
+echo "/proc/sys/vm settings"
+echo "---------------------"
+cat /proc/vmstat | grep -i tlb 
+
+
+echo
+echo
+echo "/proc/sys/vm settings"
+echo "---------------------"
+grep . /proc/sys/vm/*hugepages*
+
+
+echo
+echo
+echo "sysfs hugetlb stats"
+echo "---------------------"
+grep . /sys/fs/cgroup/hugetlb/hugetlb.2MB.*

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+if [ `whoami` != "root" ]
+then
+	sd=" sudo -E "
+fi
+
+
+
+$sd cat /sys/kernel/debug/kfence/stats > /dev/shm/kfence.log
+$sd echo >> /dev/shm/kfence.log
+$sd echo >> /dev/shm/kfence.log
+$sd echo >> /dev/shm/kfence.log
+$sd echo >> /dev/shm/kfence.log
+$sd echo >> /dev/shm/kfence.log
+$sd echo >> /dev/shm/kfence.log
+$sd echo >> /dev/shm/kfence.log
+$sd cat /sys/kernel/debug/kfence/objects >> /dev/shm/kfence.log
+
+$sd vi /dev/shm/kfence.log

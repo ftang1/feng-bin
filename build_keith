@@ -1,0 +1,3 @@
+set -x
+cd /home/feng/ws2/projects/bee-keith/
+make bzImage -j 28

@@ -1,0 +1,29 @@
+#!/bin/bash
+# Author: Feng Tang <feng.tang@intel.com>
+#
+# * New version adding Alek Du's interactive op
+# * use bash to use array[]
+#
+# files=(a b c d e f g h i j k l m n o p q r s t)
+
+# Declare a array
+
+
+if [ -e "$1" ]
+then
+	vi $1 
+	exit
+fi
+
+dir_names=`find . -name "$1" | sed -e "/.*.o$/d"`
+
+select tdir in $dir_names
+do
+	break
+done
+
+echo $tdir
+
+cd $tdir
+
+

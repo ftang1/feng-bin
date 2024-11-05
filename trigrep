@@ -1,0 +1,11 @@
+#!/bin/sh
+if [ ! -e "$4" ]
+then
+	#echo '$2 is NULL'
+	cwd=.
+else
+	#echo "\$2 is $2"
+	cwd=$4
+fi
+
+tgrep $1 $cwd | grep $2 | grep $3 | grep --color -e $1 -e $2 -e $3

@@ -1,0 +1,1 @@
+make bzImage -j 8 && sudo make install && sudo reboot

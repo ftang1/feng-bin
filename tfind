@@ -1,0 +1,12 @@
+#!/bin/sh
+if [ ! -e "$2" ]
+then
+	#echo '$2 is NULL'
+	fdir=.
+else
+	#echo "\$2 is $2"
+	fdir=$2
+fi
+
+#sudo find $fdir -name $1
+find $fdir -name $1

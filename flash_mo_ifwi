@@ -1,0 +1,4 @@
+set -x
+adb reboot bootloader && sleep 10
+fastboot flash ifwi "/home/feng/mo_ifwi/ifwi_ann_a0-mofd_v0.bin" && fastboot flash dnx "/home/feng/mo_ifwi/dnx_fwr_ann_a0-mofd_v0.bin" && fastboot continue
+  

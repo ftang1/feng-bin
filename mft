@@ -1,0 +1,2 @@
+cat /sys/kernel/debug/tracing/trace > /dev/shm/ft.log
+vi /dev/shm/ft.log

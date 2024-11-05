@@ -1,0 +1,5 @@
+cd /home/feng
+for i in *.sh
+do
+	adb push $i /data/$i
+done

@@ -1,0 +1,43 @@
+#!/bin/sh
+#make -j $(grep -c processor /proc/cpuinfo)
+
+if [ `whoami` != "root" ]
+then
+	sd=" sudo -E "
+fi
+
+# Ubuntu modules could be too huge for initrd
+grep -i -e "debian" -e "ubuntu" /etc/os-release && strip_opt=" INSTALL_MOD_STRIP=1 "
+
+[ -f "vmlinux" ] && tkbd && $sd make $strip_opt modules_install && $sd make install
+#sudo update-initramfs -c -k $1
+
+#head=$((git-show HEAD | grep commit | cut -c'8-16'))
+head=$(git show HEAD | grep commit | cut -c'8-16')
+
+gsd /boot/vmlinuz-*$head*
+
+loader=`ls /boot/loader/entries/*$head*`
+
+echo $loader
+
+#sed -i -e "/options root=/d" /boot/loader/entries/*$head*
+#cat /boot/loader/entries/*$head*
+
+sed -i -e "/options root=/d" $loader 
+#cat $loader 
+
+echo
+echo
+echo
+echo
+
+
+[ "$1" = "gnr" ] && echo "options root=UUID=a0a13fe0-6a84-4fc3-9361-e2158aa8dad4 ro crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M resume=UUID=b253fdf1-fa6d-4d1d-8425-813e8676ef39 rhgb quiet selinux=0 console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 intel_iommu=on,sm_on numa_balancing=disable tsc=recalibrate tdxio \$tuned_params" >> $loader 
+
+echo
+echo
+echo
+echo
+
+#cat $loader 

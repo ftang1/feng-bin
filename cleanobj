@@ -1,0 +1,9 @@
+rm -f *.o
+rm -f *.cmd
+rm -f *.ko
+rm -f *.mod.c
+
+trm *.o
+trm *.cmd
+trm *.ko
+trm *.mod.c

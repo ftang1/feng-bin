@@ -1,0 +1,2 @@
+set -x
+cat /sys/kernel/debug/tracing/trace_pipe > /dev/null

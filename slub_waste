@@ -1,0 +1,26 @@
+
+cd /sys/kernel/debug/slab/ || exit
+
+[ -f ~/slab-waste.log ] && rm ~/slab-waste.log
+
+for i in kmalloc-*k
+do
+	echo >> ~/slab-waste.log
+	echo >> ~/slab-waste.log
+	echo >> ~/slab-waste.log
+
+	echo "------------------------------" >> ~/slab-waste.log
+	echo $i >> ~/slab-waste.log
+	echo "------------------------------" >> ~/slab-waste.log
+
+
+	cat $i/alloc_traces > ~/$i.log
+#	cat $i/alloc_traces | sort -r  >> ~/slab-waste.log
+#	echo >> ~/slab-waste.log
+#	cat $i/free_traces | sort -r >> ~/slab-waste.log
+	echo >> ~/slab-waste.log
+	echo >> ~/slab-waste.log
+
+done
+
+

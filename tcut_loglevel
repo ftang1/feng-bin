@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo $@
+
+# remove the first [......] in each line start
+# sed -e "s/^\[[^]]*\]//g" -i $@
+# remove the first <2> in kernel log
+sed -e 's/^...//g' -i $@
+exit
+

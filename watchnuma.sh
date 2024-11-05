@@ -1,0 +1,1 @@
+watch -d 'numactl -H'

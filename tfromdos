@@ -1,0 +1,5 @@
+#!/bin/bash
+for i in `find . -name *.[ch]`
+do
+	fromdos $i
+done

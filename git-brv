@@ -1,0 +1,11 @@
+#!/bin/bash
+
+LESS="-FEXsS --rscroll=-" git branch --format="\
+%(color:blue)%(HEAD)%(creatordate:short) \
+%%(color:yellow)%(objectname:short) \
+%%(align:50,left)\
+%%(color:green)%(refname:short) \
+%%(color:red)%(upstream:short) \
+%%(end)\
+%%(color:yellow)%(contents:subject)" --sort=-creatordate "$@"
+

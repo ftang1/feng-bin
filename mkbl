@@ -1,0 +1,2 @@
+cd /home/feng/test/nordic_bl/
+make && make install 

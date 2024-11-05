@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Making the ctags, we only use x86 for our arch
+if [ -d "./arch/x86/kernel" ]
+then
+	echo "We are in a Linux kernel tree!"
+	for i in `ls`
+	do
+		if [ $i = "arch" ]
+		then
+			echo "Adding ctags for [arch/x86]"
+			ctags --langmap=Asm:+.inc -R -a arch/x86/ 
+		elif [ -d "$i" ]
+		then
+			echo "Adding ctags for [$i]"
+			ctags --langmap=Asm:+.inc -R -a $i/ 
+		fi
+	done
+else
+	ctags --langmap=Asm:+.inc -R *
+fi
+
+#ctags --langmap=Asm:+.inc -R *
+
+

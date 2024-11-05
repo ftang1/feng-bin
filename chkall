@@ -1,0 +1,149 @@
+#!/bin/bash
+#
+# Please keep those inline debug 'echo' which is commented
+# now, which is useful for debug for potential issues like:
+#	* change of keyword of xxx.json
+#
+
+
+#set -x
+
+# show the commit info
+[ -f "job.yaml" ] && [ -f "queue.sh" ] && echo && grep -w for queue.sh | grep -w commit | grep -v "#" && echo 
+
+# We can use 2-dimensions array to add new stuff
+bm_array=(
+	'fsmark.json files_per_sec'
+	'netperf.json Throughput_' 
+	'netperf.json Throughput_Mbps' 
+	'will-it-scale.json per_thread_ops'
+	'will-it-scale.json per_process_ops'
+	'stress-ng.json ops_per_sec'
+	'fio.json bw_MBps'
+	'fio.json read_bw_MBps'
+	'fio.json write_bw_MBps'
+	'unixbench.json unixbench.score'
+	'hackbench.json hackbench.throughput'
+	'aim7.json jobs-per-min'
+	'kbuild.json buildtime_per_iteration'
+	'pmbench.json throughput.aps'
+	'vm-scalability.json vm-scalability.throughput' 
+	'sysbench-memory.json throughput_MB'
+	'memtier.json avg_totals_ops'
+	'memtier.json avg_totals_p99_latency_ms'
+	'fxmark.json works/sec'
+	'redis.json set_avg_throughput_rps'
+	'redis.json get_avg_throughput_rps'
+#	'ebizzy.json throughput'
+)
+
+# This for in the home result dir
+[ -f avg.json ] && { 
+	
+	echo "inside result home"
+
+	for d in `ls`
+	do
+
+		[ -d $d ] || continue
+
+#		echo $d
+#		echo "----------------------------"
+
+		cd $d
+		for bm in "${bm_array[@]}"
+		do
+			sub=($bm)
+#			echo ${sub[0]} ${sub[1]}
+
+			[ -f job.yaml ] && [ -f ${sub[0]} ] && cat ${sub[0]} | grep -w ${sub[1]} -A 1
+		done
+
+		cd -  > /dev/null
+	done
+
+	echo "exiting avg.json dir"
+	exit
+#fi
+}
+
+
+i=0
+
+#
+# This is to check inside our job directory, by using result root
+# $r is the result directory
+#
+#echo "enter job dir"
+for r in `lkp job-statistics -s _rt lkp | cut -f 6 | grep result`
+do
+
+#	echo $r
+#	echo $((basename $r))
+
+	echo -n "commit: "
+	basename $r | cut -c -12
+	echo "---------------------"
+	
+	# 1. This is the fixed files
+#	[ -f $r/0/fio.json ] || [ -f $r/1/fio.json ] && cat $r/*/fio.json | grep bw_MBps -A 1
+#	[ -f $r/0/will-it-scale.json ] && cat $r/*/will-it-scale.json | grep per_process_ops -A 1
+#	[ -f $r/0/stress-ng.json ] && cat $r/*/stress-ng.json | grep ops_per_sec -A 1
+#	[ -f $r/0/unixbench.json ] && cat $r/*/unixbench.json | grep unixbench.score -A 1
+#	[ -f $r/0/hackbench.json ] && cat $r/*/hackbench.json | grep hackbench.throughput -A 1
+	[ -f $r/0/ebizzy.json ] && cat $r/*/ebizzy.json | grep  "ebizzy.throughput\"" -A 1
+#	[ -f $r/0/aim7.json ] && cat $r/*/aim7.json | grep jobs-per-min -A 1
+
+
+	# 2. This is for dynamic added
+	for bm in "${bm_array[@]}"
+	do
+		sub=($bm)
+		[ -f $r/0/${sub[0]} ] || [ -f $r/1/${sub[0]} ] && cat $r/*/${sub[0]} | grep -w ${sub[1]} -A 1
+
+		[ -f job.yaml ] && [ -f ${sub[0]} ] && grep -w commit job.yaml && cat ${sub[0]} | grep -w ${sub[1]} -A 1
+	done
+
+#	unixbench.score
+
+	echo
+	let i=i+1
+done
+#echo "exit job dir"
+
+
+# check the number inside result folder
+[ -f job.yaml ] && [ -f fio.json ] && grep -w commit job.yaml && cat fio.json | grep bw_MBps -A 1
+[ -f job.yaml ] && [ -f will-it-scale.json ] && grep -w commit job.yaml && cat will-it-scale.json | grep per_process_ops -A 1
+[ -f job.yaml ] && [ -f stress-ng.json ] && grep -w commit job.yaml && cat stress-ng.json | grep ops_per_sec -A 1
+[ -f job.yaml ] && [ -f unixbench.json ] && grep -w commit job.yaml && cat unixbench.json | grep unixbench.score -A 1
+[ -f job.yaml ] && [ -f hackbench.json ] && grep -w commit job.yaml && cat hackbench.json | grep hackbench.throughput -A 1
+[ -f job.yaml ] && [ -f aim7.json ] && grep -w commit job.yaml && cat aim7.json | grep -w jobs-per-min -A 1
+[ -f job.yaml ] && [ -f ebizzy.json ] && grep -w commit job.yaml && cat ebizzy.json | grep  "ebizzy.throughput\"" -A 1
+
+# check inside "new" "old" folder
+#echo "enter new/old dir"
+for bm in "${bm_array[@]}"
+do
+	sub=($bm)
+#	[ -f $r/0/${sub[0]} ] || [ -f $r/1/${sub[0]} ] && cat $r/*/${sub[0]} | grep ${sub[1]} -A 1
+
+	[ -f job.yaml ] && [ -f ${sub[0]} ] && grep -w commit job.yaml && cat ${sub[0]} | grep -w ${sub[1]} -A 1
+done
+#echo "exit new/old dir"
+
+
+
+# What's this for?
+for i in "${bm_array[@]}" 
+do
+	sub_array=($i)
+	for j in "${sub_array[@]}" 
+	do
+		echo $j > /dev/null
+	done
+done
+
+
+
+

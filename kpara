@@ -1,0 +1,2 @@
+[ -f Documentation/admin-guide/kernel-parameters.txt ] && vi Documentation/admin-guide/kernel-parameters.txt && exit
+vi ~/ws2/projects/linux-2.6/Documentation/admin-guide/kernel-parameters.txt

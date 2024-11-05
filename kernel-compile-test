@@ -1,0 +1,18 @@
+
+nr_cpu=`cat /proc/cpuinfo | grep processor | wc -l`
+
+echo "Starting allyesconfig build test:"
+echo "---------------------------------"
+make allyesconfig && make bzImage -j $nr_cpu && echo "allyesconfig build Success!" >> result.log
+echo
+
+echo "Starting allmodconfig build test:"
+echo "---------------------------------"
+make allmodconfig && make bzImage -j $nr_cpu && make modules -j $nr_cpu && echo "allmodconfig build success" >> result.log
+echo
+
+echo "Starting allnoconfig build test:"
+echo "---------------------------------"
+make allnoconfig && make bzImage -j $nr_cpu && echo "allnoconfig build Success!" >> result.log
+echo
+

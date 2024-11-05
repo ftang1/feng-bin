@@ -1,0 +1,1 @@
+cd /home/feng/android/ww44/ && make bootimage -j 8 && cp out/target/product/mfld_gi/boot.bin . && flash_kernel.sh

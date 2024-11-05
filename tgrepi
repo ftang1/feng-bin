@@ -1,0 +1,34 @@
+#!/bin/sh
+#if [ $# -lt 2 ]; then
+#	echo "tgrep Usage: tgrep expression [directory] !!!"
+#	exit 1
+#fi
+
+if [ ! -e "$2" ]
+then
+	#echo '$2 is NULL'
+	cwd=.
+else
+	#echo "\$2 is $2"
+	cwd=$2
+fi
+
+#if test "$2" = ""
+#then
+#	echo "haha param 2 is NULL"
+#fi
+
+for i in $(ls $cwd)
+do
+	j=$cwd/$i
+	if [ -d $j ]
+	then
+		tgrepi $1 $j
+	#else
+		#grep "$1" $cwd/*.[chsS] $cwd/*.asm $cwd/*.inc $cwd/*.ld $cwd/[Mm]akefile 2>/dev/null
+		#grep $1 $j
+	fi
+done
+
+grep -i --color "$1" $cwd/*.[chsS] $cwd/*.cpp $cwd/*.java $cwd/*.asm $cwd/*.inc $cwd/*.py $cwd/*.ld $cwd/[Mm]akefile 2>/dev/null
+

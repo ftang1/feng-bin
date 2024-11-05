@@ -1,0 +1,47 @@
+#!/usr/bin/expect -f
+
+set kernel kboot-kernel
+set kernel vmlinuz
+
+set send_slow {1 .005}
+set timeout -1
+match_max 100000
+
+# spawn cu -l /dev/ttyUSB0 -s 115200
+spawn screen -x serial
+
+sleep .1
+
+# send -- "\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r"
+
+# sleep 1
+
+expect {
+	"shell> "  { send -s "exit\r\n" }
+	"KBoot> "  { send -s "udhcpc && wget http://192.168.1.11/~wfg/cgi-bin/gpxelinux.cgi?hostname=wfg-mrst -O /tmp/gpxelinux && kernel=\$(grep -m 1 KERNEL /tmp/gpxelinux | cut -f2 -d' '); cmdline=\$(grep -m 1 APPEND /tmp/gpxelinux | cut -f2- -d' '); mount -o ro,nolock 192.168.1.11:/home/wfg/public_html /nfs && kexec -f /nfs/\$kernel --command-line=\"\$cmdline\" \r\n" }
+
+	# "KBoot> "  { send -s "udhcpc && wget http://192.168.1.11/~wfg/cgi-bin/gpxelinux.cgi?hostname=wfg-mrst -O /tmp/gpxelinux && kernel=\$(grep -m 1 KERNEL /tmp/gpxelinux | cut -f2 -d' '); cmdline=\$(grep -m 1 APPEND /tmp/gpxelinux | cut -f2- -d' '); wget -T 3 http://192.168.1.11/~wfg/\$kernel && kexec -f \$(basename \$kernel) --command-line=\"\$cmdline\" \r\n" }
+	# "KBoot> "  { send -s "ifconfig eth0 192.168.1.134 && wget http://192.168.1.11/~wfg/i386/$kernel && wget http://192.168.1.11/~wfg/i386/kboot-cmdline && kexec -f $kernel --command-line=\$(cat kboot-cmdline)\r\n" }
+	#KBoot>  { send -s "udhcpc && route add default gw 10.239.48.241 && mount 10.239.51.240:/home/wfg/public_html /nfs && cd /nfs/i386 && kexec -f vmlinuz --command-line=\$(cat kboot-cmdline)\r\n" }
+	#"KBoot> "  { send -s "route add default gw 10.239.48.241; wget http://10.239.51.240/~wfg/i386/$kernel && wget http://10.239.51.240/~wfg/i386/kboot-cmdline && kexec -f $kernel --command-line=\$(cat kboot-cmdline)\r\n" }
+	#"KBoot> "  { send -s "udhcpc && route add default gw 10.239.48.241; cd /tmp/ && rm etc.tgz; wget http://10.239.51.240/~wfg/usbkey/boot/kexec/etc.tgz && tar z -C / -xf etc.tgz && sh /etc/rc.d/gpxelinux" }
+}
+
+send "\001C"
+send "\001d"
+
+sleep .1
+
+close
+
+# expect "KBoot> "
+# 
+# send "mkdir /nfs; mount 10.239.51.240:/home/wfg/public_html /nfs\r\n"
+# 
+# expect "KBoot> "
+# 
+# send "cd /nfs/i386\r\n"
+# 
+# expect "KBoot> "
+# 
+# send "kexec -f vmlinuz --command-line=\$(cat kboot-cmdline)\r\n"

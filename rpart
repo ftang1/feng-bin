@@ -1,0 +1,7 @@
+set -x
+readelf -a quark.elf > qrk.log
+cat qrk.log | sort -k 2 > ~/qrk_sort.log
+cp ~/qrk_sort.log qrk_sort.log
+readelf -a arc.elf > arc.log
+cat arc.log | sort -k 2 > ~/arc_sort.log
+cp ~/arc_sort.log arc_sort.log

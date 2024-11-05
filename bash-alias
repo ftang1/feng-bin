@@ -1,0 +1,460 @@
+
+alias nr_cpu='cat /proc/cpuinfo | grep processor | wc -l'
+
+
+export PATH=/usr/lib/ccache/:~/bin:$PATH:/usr/lib/git-core/:.:~/.bin/:~/tools/gnutools/arc-elf-201412/bin/:~/tools/gnutools/i386-elf/bin/:~/tools/gnutools/arc-elf/bin/
+
+########################################################
+#		Misc
+########################################################
+alias pti='cat /proc/pagetypeinfo'
+alias twget='wget --no-check-certificate '
+
+alias mu0='sudo minicom usb0 -C ~/usb0.log '
+alias mu1='sudo minicom usb1 -C ~/usb1.log'
+alias mu2='sudo minicom usb2 -C ~/usb2.log'
+alias mu3='sudo minicom usb3 -C ~/usb3.log'
+alias mu4='sudo minicom usb4 -C ~/usb4.log '
+alias mu5='sudo minicom usb5 '
+alias mu6='sudo minicom usb6 '
+
+alias tdc='timedatectl'
+alias tsynccd='systemctl restart chronyd'
+
+########################################################
+#		Normal Routine
+########################################################
+alias ls='ls --color'
+alias ll='ls -l'
+alias li='ls -li'
+alias la='ls -A'
+alias l='ls -CF'
+alias lt='ls -lt'
+
+alias tld='ls -d'
+
+alias c='cat'
+alias f='tfind'
+alias e='exit'
+alias g='grep --color'
+alias tg='tgrep --color'
+alias grep='grep --color'
+
+alias grepc2c='grep HITM s*.log | grep -v -e Total -e Misses | grep HITM'
+
+alias al='addr2line -e vmlinux -ipf'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
+alias tcd='cd ~/ws2/projects/; cd'
+alias lcd='cd ~/ws2/projects/linux-2.6/'
+#alias tcd='cd /home/feng/android/; cd'
+alias tps='ps auxH | grep'
+alias tka='sudo killall -9'
+alias atop='sudo atop'
+alias tdmesg='sudo dmesg -c > /dev/null'
+alias tindent='indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs -cp1 '
+alias vt='vim -t'
+alias v='tvi'
+alias h='head'
+
+alias dgrep='dmesg | grep '
+
+# Git commands alias
+alias gg='git grep'
+alias ggw='git grep -w'
+alias ggi='git grep -i'
+alias gcp='git cherry-pick'
+alias ga='git am'
+alias gaa='git am --abort; trm *.rej'
+alias gad='git add'
+alias gs='git status'
+alias gsw='git show'
+alias gb='git branch'
+alias gbi='git rebase -i'
+alias gba='git rebase --abort'
+alias gc='git checkout'
+alias gd='git diff --patience'
+#alias gd='dir=.;if ["$1" != ""]; then dir=$1;fi;cd $dir;git diff'
+alias gui='git update-index'
+alias gp='git pull --tags'
+alias gfp='git format-patch'
+alias gls='git log --pretty=format:"%h [%an] %s %cd"'
+alias glsnotime='git log --pretty=format:"%h [%an] %s"'
+alias sgls='git log --pretty=format:"[%an] %s"'
+alias ssgls='git log --pretty=format:"%s"'
+alias hsgls='git log --pretty=format:"[%h] %s"'
+alias tgls='git log --pretty=format:"%h [%an] %s %cd" | grep "Feng Tang"'
+alias grh='git reset --hard'
+alias gwp='find . -name "$1" | xargs git whatchanged -p '
+alias gwpf='find . -name "$1" | xargs git whatchanged -p --full-diff '
+alias gl='git log'
+alias tgp='tsocks git pull'
+alias ga='git am'
+alias gcm='git commit -m'
+alias gcmn='git commit -m --no-verify'
+#alias gacm='git commit -a -m --no-verify'
+alias gacm='git commit -a -s --no-verify -m'
+alias gca='git commit --amend'
+
+alias grvt='git revert '
+
+alias git-show='git show'
+alias git-revert='git revert'
+
+
+########################################################
+#		QEMU
+########################################################
+alias sqemu='ssh -p 22222 root@127.0.0.1'
+alias tsqemu='tloop ssh -p 22222 root@127.0.0.1'
+# i386
+alias iqemu='ssh -p 5555 root@127.0.0.1'
+
+alias rpbssh='ssh root@127.0.0.1 -p 10055'
+
+
+########################################################
+#		leveldb test
+########################################################
+
+alias db1='./db_bench --benchmarks=readrandom --num=30000000 --threads=1'
+alias db2='./db_bench --benchmarks=readrandom --num=20000000 --threads=2'
+alias db8='./db_bench --benchmarks=readrandom --num=3000000 --threads=8'
+alias db8l='./db_bench --benchmarks=readrandom --num=500000000 --threads=8'
+alias db16='./db_bench --benchmarks=readrandom --num=1000000 --threads=16'
+alias db36='./db_bench --benchmarks=readrandom --num=200000 --threads=36'
+alias db32='./db_bench --benchmarks=readrandom --num=400000 --threads=32'
+alias db48='./db_bench --benchmarks=readrandom --num=400000 --threads=48'
+alias db48l='./db_bench --benchmarks=readrandom --num=20000000 --threads=48'
+alias db64='./db_bench --benchmarks=readrandom --num=200000 --threads=64'
+
+alias db128='./db_bench --benchmarks=readrandom --num=200000 --threads=128'
+alias db128l='./db_bench --benchmarks=readrandom --num=2000000 --threads=128'
+
+alias db192='./db_bench --benchmarks=readrandom --num=200000 --threads=192'
+alias db192l='./db_bench --benchmarks=readrandom --num=2000000 --threads=192'
+
+alias psdb8='perf stat ./db_bench --benchmarks=readrandom --num=3000000 --threads=8'
+alias psdb128='perf stat ./db_bench --benchmarks=readrandom --num=200000 --threads=128'
+
+
+alias wdb2='./db_bench --benchmarks=fillrandom --num=100000 --threads=2'
+alias wdb16='./db_bench --benchmarks=fillrandom --num=100000 --threads=16'
+alias wdb36='./db_bench --benchmarks=fillrandom --num=20000 --threads=36'
+alias wdb32='./db_bench --benchmarks=fillrandom --num=40000 --threads=32'
+alias wdb64='./db_bench --benchmarks=fillrandom --num=20000 --threads=64'
+#alias wdb128='./db_bench --benchmarks=fillrandom --num=20000 --threads=128'
+
+alias wdb128='./db_bench --benchmarks=fillrandom --num=10000 --threads=128'
+alias wdb192='./db_bench --benchmarks=fillrandom --num=10000 --threads=192'
+
+alias wdb128l='./db_bench --benchmarks=fillrandom --num=300000 --threads=128'
+alias wdb192l='./db_bench --benchmarks=fillrandom --num=300000 --threads=192'
+
+alias dbrs64='./db_bench --benchmarks=readseq --num=1000000 --threads=64'
+alias dbws64='./db_bench --benchmarks=fillseq --num=50000 --threads=64'
+
+
+########################################################
+#		SSH login
+########################################################
+
+alias clx='ssh feng@feng-clx.sh.intel.com'
+alias sclx='sshfs feng@feng-clx.sh.intel.com: ~/clx'
+
+alias adl='ssh root@feng-adl.sh.intel.com'
+alias sadl='sshfs root@feng-adl.sh.intel.com: ~/adl'
+
+alias b9='ssh feng@shbuild999.sh.intel.com'
+alias sb9='sshfs feng@shbuild999.sh.intel.com: ~/b9/'
+alias sbee='sshfs feng@bee.sh.intel.com: ~/sbee/'
+alias sbeegit='sshfs feng@bee.sh.intel.com:/git/ ~/bee/'
+alias sskl='sshfs feng@feng-skl.sh.intel.com: ~/skl/'
+
+
+icx="10.165.58.229"
+#https://10.165.59.116
+
+alias olicx='ssh root@$icx'
+alias tolicx='tloop ssh root@$icx'
+alias lolicx='tloop ssh root@$icx'
+alias solicx='sshfs root@$icx: ~/olicx'
+alias folicx='ssh feng@$icx'
+alias sfolicx='sshfs feng@$icx: ~/olicx'
+
+
+icx2="10.165.158.72"
+
+alias olicx2='ssh root@$icx2'
+alias tolicx2='tloop ssh root@$icx2'
+alias lolicx2='tloop ssh root@$icx2'
+alias solicx2='sshfs root@$icx2: ~/olicx2'
+alias folicx2='ssh feng@$icx2'
+alias sfolicx2='sshfs feng@$icx2: ~/olicx2'
+
+
+olmtl="10.165.158.72"
+
+alias olmtl='ssh root@$olmtl'
+alias tolmtl='tloop ssh root@$olmtl'
+alias lolmtl='tloop ssh root@$olmtl'
+alias solmtl='sshfs root@$olmtl: ~/olmtl'
+alias folmtl='ssh feng@$olmtl'
+alias sfolmtl='sshfs feng@$olmtl: ~/olmtl'
+
+sprd="10.239.48.41"
+
+alias sprd='ssh root@$sprd'
+alias tsprd='tloop ssh root@$sprd'
+alias lsprd='tloop ssh root@$sprd'
+alias ssprd='sshfs root@$sprd: ~/sprd'
+alias fsprd='ssh feng@$sprd'
+alias sfsprd='sshfs feng@$sprd: ~/sprd'
+
+
+emr="10.165.56.247"
+
+alias emr='ssh root@$emr'
+alias temr='tloop ssh root@$emr'
+alias lemr='tloop ssh root@$emr'
+alias semr='sshfs root@$emr: ~/emr'
+alias femr='ssh feng@$emr'
+alias sfemr='sshfs feng@$emr: ~/emr'
+
+
+#alias ipmiemr='ipmitool -I lanplus -L OPERATOR -H $BMC_IP -U sdp -P '$harktank2Go' sol activate'
+alias ipmiemr='ipmitool -I lanplus -L OPERATOR -H 10.165.56.253 -U sdp -P '$harktank2Go' sol activate'
+
+sprqa="10.112.231.63"
+alias sprqa='ssh root@$sprqa'
+alias tsprqa='tloop ssh root@$sprqa'
+alias lsprqa='tloop ssh root@$sprqa'
+alias ssprqa='sshfs root@$sprqa: ~/sprqa'
+alias fsprqa='ssh feng@$sprqa'
+alias sfsprqa='sshfs feng@$sprqa: ~/sprqa'
+
+ptsv1="spr-pts-v1"
+
+alias ptsv1='ssh pts@$ptsv1'
+alias tptsv1='tloop ssh pts@$ptsv1'
+alias lptsv1='tloop ssh pts@$ptsv1'
+alias sptsv1='sshfs pts@$ptsv1: ~/ptsv1'
+
+ptsv3="spr-pts-v3"
+
+alias ptsv3='ssh pts@$ptsv3'
+alias tptsv3='tloop ssh pts@$ptsv3'
+alias sptsv3='sshfs pts@$ptsv3: ~/ptsv3'
+
+ptsv3icx="spr-pts-v3-icx"
+
+alias ptsv3icx='ssh pts@$ptsv3icx'
+alias tptsv3icx='tloop ssh pts@$ptsv3icx'
+alias sptsv3icx='sshfs pts@$ptsv3icx: ~/ptsv3'
+
+ptsv3n="spr-pts-v3-notune"
+
+alias ptsv3n='ssh pts@$ptsv3n'
+alias tptsv3n='tloop ssh pts@$ptsv3n'
+alias lptsv3n='tloop ssh pts@$ptsv3n'
+alias sptsv3n='sshfs pts@$ptsv3n: ~/ptsv3n'
+
+
+#gnrnoip="10.45.154.197"
+gnrnoip="10.45.153.133"
+
+alias gnrnoip='ssh root@$gnrnoip'
+alias tgnrnoip='tloop ssh root@$gnrnoip'
+alias lgnrnoip='tloop ssh root@$gnrnoip'
+alias sgnrnoip='sshfs root@$gnrnoip: ~/gnrnoip'
+alias fgnrnoip='ssh feng@$gnrnoip'
+alias sfgnrnoip='sshfs feng@$gnrnoip: ~/gnrnoip'
+
+
+gnr2="10.45.174.4"
+
+alias gnr2='ssh root@$gnr2'
+alias tgnr2='tloop ssh root@$gnr2'
+alias lgnr2='tloop ssh root@$gnr2'
+alias sgnr2='sshfs root@$gnr2: ~/gnr2'
+alias fgnr2='ssh feng@$gnr2'
+alias sfgnr2='sshfs feng@$gnr2: ~/gnr2'
+
+gnr3="10.45.209.196"
+
+alias gnr3='ssh root@$gnr3'
+alias tgnr3='tloop ssh root@$gnr3'
+alias lgnr3='tloop ssh root@$gnr3'
+alias sgnr3='sshfs root@$gnr3: ~/gnr3'
+alias fgnr3='ssh feng@$gnr3'
+alias sfgnr3='sshfs feng@$gnr3: ~/gnr3'
+
+
+trpb="10.112.230.245"
+
+alias rpb='ssh root@$trpb'
+alias ttrpb='tloop ssh root@$trpb'
+alias strpb='sshfs root@$trpb: ~/trpb'
+alias ftrpb='ssh feng@$trpb'
+alias tftrpb='tloop ssh feng@$trpb'
+alias sftrpb='sshfs feng@$trpb: ~/trpb'
+
+
+trpb2="10.75.135.134"
+
+alias rpb2='ssh root@$trpb2'
+alias ttrpb2='tloop ssh root@$trpb2'
+alias strpb2='sshfs root@$trpb2: ~/trpb2'
+alias ftrpb2='ssh feng@$trpb2'
+alias tftrpb2='tloop ssh feng@$trpb2'
+alias sftrpb2='sshfs feng@$trpb2: ~/trpb2'
+
+#ssh bkc@10.75.136.196
+
+srf="10.112.229.26"
+
+alias srf='ssh root@$srf'
+alias tsrf='tloop ssh root@$srf'
+alias ssrf='sshfs root@$srf: ~/srf'
+alias fsrf='ssh feng@$srf'
+alias tfsrf='tloop ssh feng@$srf'
+alias sfsrf='sshfs feng@$srf: ~/srf'
+
+
+gnr8s="10.75.39.223"
+
+alias gnr8s='ssh root@$gnr8s'
+alias tgnr8s='tloop ssh root@$gnr8s'
+alias lgnr8s='tloop ssh root@$gnr8s'
+alias sgnr8s='sshfs root@$gnr8s: ~/gnr8s'
+alias fgnr8s='ssh feng@$gnr8s'
+alias sfgnr8s='sshfs feng@$gnr8s: ~/gnr8s'
+
+
+
+lkptdx="10.112.229.37"
+
+alias lkptdx='ssh lkp@$lkptdx'
+alias tlkptdx='tloop ssh lkp@$lkptdx'
+alias llkptdx='tloop ssh lkp@$lkptdx'
+alias slkptdx='sshfs lkp@$lkptdx: ~/lkptdx'
+
+
+#icx2="$clx1"
+
+clx1="10.165.58.134"
+
+alias olclx='ssh root@$clx1'
+alias tolclx='tloop ssh root@$clx1'
+alias lolclx='tloop ssh root@$clx1'
+alias solclx='sshfs root@$clx1: ~/olclx'
+alias folclx='ssh feng@$clx1'
+alias sfolclx='sshfs feng@$clx1: ~/olclx'
+
+# Ali SPR login
+export jumper="39.105.51.111"
+alias aj='tsocks ssh root@$jumper '
+alias faj='tsocks ssh feng@$jumper '
+
+alias saj='tsocks sshfs root@$jumper: ~/ali1'
+alias saj2='tsocks sshfs feng@$jumper:/home/feng ~/ali2'
+
+# Power Lab
+alias plab='ssh powerlab'
+alias splab='sshfs powerlab: ~/powerlab/'
+
+# inn
+alias inn='ssh -p 22000 bee.sh.intel.com'
+alias sinn='sshfs -p 22000 bee.sh.intel.com: ~/inn/'
+
+# rpb
+alias srpb2='sshfs feng@10.75.135.134: ~/rpb2'
+alias srpb1='sshfs feng@10.112.230.245: ~/rpb1'
+
+alias innfetch='ssh inn tgitfetch'
+
+########################################################
+#		shbuild999
+########################################################
+alias b9qemutest='make bzImage -j 32 && ~/local_16cpu.sh'
+
+
+########################################################
+#		Stress Cmds
+########################################################
+alias snioport='stress-ng --timeout 100 --times --verify --metrics-brief --ioport 64'
+alias snlockbus='stress-ng --timeout 100 --times --verify --metrics-brief --lockbus 64'
+
+
+########################################################
+#		Yum
+########################################################
+alias yi='yum install'
+alias ys='yum search'
+
+alias yia='yum install zstd git ctags dwarves ncurses ncurses-devel openssl openssl-devel cmake dstat htop fuse-sshfs vim mlocate bc binutils-devel libunwind-devel numactl-devel perl-devel perl slang-devel'
+
+########################################################
+#		Apt
+########################################################
+
+#alis aia='apt install mpi-default-dev libdwarf-dev libdwarf1 flex bison libssl-dev libelf-dev libnuma-dev git dwarves ncurses ncurses-dev libunwind-dev libzstd-dev libcap-dev libperl-dev libpython-all-dev vim cmake dstat perl mlocate bc binutils-dev'
+
+
+########################################################
+#		SSHFS
+########################################################
+alias mountmobl='sudo mount.cifs //ftang1-mobl.ccr.corp.intel.com/c$ ~/t14/ -o user=ftang1,dom=ccr,rw, file_mode=0777,dir_mode=0777'
+alias mountt14='sudo mount.cifs //ftang1-mobl.ccr.corp.intel.com/c$ ~/t14/ -o user=ftang1,dom=ccr,rw, file_mode=0777,dir_mode=0777'
+
+alias tssh='tsocks ssh'
+alias tscp='tsocks scp'
+########################################################
+#		compiler
+########################################################
+
+########################################################
+#		kernel
+########################################################
+
+alias btr='kbd && tkinstall && reboot'
+
+alias tks='kbd && tkinstall && tkexecself'
+alias mm='make menuconfig'
+alias moc='make oldconfig'
+alias p='patch -p1 <'
+
+#alias gsd='grubby --set-default='
+
+########################################################
+#		Functions
+########################################################
+alias gplinux='git clone https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux.git'
+
+alias vkp='vim /home/feng/ws2/projects/linux-2.6/Documentation/admin-guide/kernel-parameters.txt'
+
+alias tbinupdate='cd ~/bin; git reset --hard HEAD^^^^ ; git pull'
+
+########################################################
+#		Misc	
+########################################################
+
+export bkcsoft="ncurses-devel sshfs vim dwarves ctags cscope"
+
+export rhsoft="acpica-tools nasm flex bison sshfs ncurses-devel elfutils-libelf-devel libunwind-devel openssl-devel libdwarf-devel dwarves lzma elfutils-devel libtraceevent-devel libbabeltrace-devel vim ctags colordiff "
+
+export ubsoft="meson sphinx nasm openssh-server libncurses-dev dwarves bison libelf-dev libelf1 libssl-dev libslang2-dev libdw-dev libcap-dev flex libelf-dev libpfm4-dev libunwind-dev libtraceevent-dev libnuma-dev libzstd-dev libbpf-dev libfuse-dev "
+
+alias pts='phoronix-test-suite ' 
+
+alias tsynccd='systemctl restart chronyd'
+
+# sub EXPORT_SYMBOL for code review
+
+#alias mask-es='sudo  sudo tsub "EXPORT_SYMBOL" "\/\/EXPORT_SYMBOL"
+
+alias egrub='sudo vi /boot/grub2/grub.cfg'

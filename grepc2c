@@ -1,0 +1,1 @@
+grep HITM s*.log | grep -v -e Total -e Misses | grep HITM

@@ -1,0 +1,5 @@
+#!/bin/sh
+readelf -a $1
+objdump -d $1
+#readelf -a $1 > $2
+#objdump -d $1 >> $2

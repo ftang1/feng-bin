@@ -1,0 +1,3 @@
+sudo dmesg | grep "()" > /dev/shm/brac.log
+
+vi /dev/shm/brac.log

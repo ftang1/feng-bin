@@ -1,0 +1,21 @@
+#!/bin/sh -e
+
+set -x
+
+rtime=2
+
+[ -n "$2" ] && rtime=$2 && echo will record $2 seconds
+
+perf record -ag -o perf.data sleep $rtime
+
+perf c2c record -ag -o perf-c2c.data sleep $rtime
+
+gen_c2c_log
+
+nr_online=`cat /proc/cpuinfo  | grep processor | wc -l`
+
+[ -n "$1" ] && cp perf.data $1-$nr_online.data && cp perf-c2c.data c2c-$1-$nr_online.data && cp s__c2c.log c2c-$1-$nr_online.log
+
+dfile=perf.data
+
+perf report -i $dfile --header -U -g folded,0.5,callee --sort=dso,symbol > perf-profile-$1-$nr_online.log

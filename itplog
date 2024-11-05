@@ -1,0 +1,12 @@
+#!/bin/sh
+dos2unix $1
+sed -e "s/^.\{26\}//g" -e "s/'$//g" -i $1
+sed -nr 'H;
+${
+x;
+s/\n//g;
+p
+}' -i $1
+sed -e "s/\(<[0-9]>\)/\n/g" -i $1
+# remove the wrong item in stack dump
+sed -i -e '/\[.*\]  \[.*\] ?/d' $1

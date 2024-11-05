@@ -1,0 +1,4 @@
+ls -l firmware || exit
+sleep 1
+dfu-util -a sensor_core -d 8087:0a99 -R -D firmware/arc.bin
+

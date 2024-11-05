@@ -1,0 +1,9 @@
+
+if [ `whoami` != "root" ]
+then
+	sd=" sudo -E "
+fi
+
+$sd dmesg | grep -v "Hardware Error" | egrep -v "pcieport|RSP|RAX|RDX|RBP|R10|R13|RIP|Code|dump_stack_lvl" > /dev/shm/100.log
+clean_klog /dev/shm/100.log
+vi /dev/shm/100.log

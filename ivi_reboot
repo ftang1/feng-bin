@@ -1,0 +1,37 @@
+#!/bin/sh
+#if [ $# -lt 2 ]; then
+#	echo "ivi_reboot Usage: ivi_reboot ip [directory] !!!"
+#	exit 1
+#fi
+echo "\$1 \$2 is" $1 $2
+
+if [ ! -e "$2" ]
+then
+	echo '$2 is NULL'
+	cwd=.
+else
+	echo "\$2 is $2"
+	cwd=$2
+fi
+
+#scp $cwd/arch/x86/boot/bzImage root@10.239.97.$1:/boot/extlinux/
+#scp $cwd/arch/x86/boot/bzImage root@$1:/boot/extlinux/
+#ssh root@$1 reboot
+
+make bzImage -j 8 || exit
+cvlip="10.239.97.$1"
+echo $cvlip
+scp $cwd/arch/x86/boot/bzImage root@$cvlip:/boot/extlinux/
+ssh root@$cvlip reboot &
+
+echo haha
+
+if [ -e "$2" ]
+then
+	cvlip="10.239.97.$2"
+	echo $cvlip
+	scp $cwd/arch/x86/boot/bzImage root@$cvlip:/boot/extlinux/
+	ssh root@$cvlip reboot
+fi
+echo hoho
+

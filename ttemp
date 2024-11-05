@@ -1,0 +1,6 @@
+for i in `cat ~/ehl.log`
+do
+	echo -n "$i			";
+	ls -d *$i* > /dev/null && echo YES;
+	ls -d *$i* > /dev/null || echo NO;
+done

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#set -x
+
+search_expr="*"
+
+root_pwd=`pwd`
+
+[ -n "$1" ] && echo "will search $1" && search_expr=$1
+
+for dir in `ls`
+do
+#	echo -n "pwd:"
+#	pwd
+#	echo "dir: " $dir
+#
+#	[ -d "$dir" ] && cd $dir && [ -d ".git" ] && echo $dir && git branch | grep "*" && echo
+#	[ -d "$dir" ] && cd $dir && [ -d ".git" ] && echo $dir && git branch  && echo && cd ..
+#	[ -d "$dir" ] && [ -d "$dir/.git" ] && cd $dir && echo $dir && git branch | grep "*"  && echo && cd ..
+#	[ -d "$dir" ] && [ -d "$dir/.git" ] && cd $dir && echo $dir && git branch | grep "$search_expr" && echo && cd ..
+	
+
+	# feng: default is to check the "*" current branch
+	[ -z "$1" ] && [ -d "$dir" ] && [ -d "$dir/.git" ] && cd $dir && echo $dir && git branch | grep "$search_expr" && echo
+
+	# This is to search some branch
+	[ -n "$1" ] && [ -d "$dir" ] && [ -d "$dir/.git" ] && cd $dir && git branch | grep "$search_expr" && echo " in dir [$dir]" && echo
+	
+	[ -d "$root_pwd/$dir/.git" ] && cd ..
+
+done
+
+

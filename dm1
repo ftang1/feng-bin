@@ -1,0 +1,9 @@
+
+if [ `whoami` != "root" ]
+then
+	sd=" sudo -E "
+fi
+
+$sd dmesg > /dev/shm/100.log
+clean_klog /dev/shm/100.log
+vi /dev/shm/100.log

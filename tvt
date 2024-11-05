@@ -1,0 +1,3 @@
+[ -d ~/ws2/projects/torvalds-linux ] && cd ~/ws2/projects/torvalds-linux && vi -t $1 && exit 
+
+[ -d ~/ws2/projects/linux-2.6 ] && cd ~/ws2/projects/linux-2.6 && vi -t $1 && exit 

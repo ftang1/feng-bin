@@ -1,0 +1,16 @@
+git init-db
+
+rm -f .gitignore
+touch .gitignore
+
+echo "cscope*" >> .gitignore
+echo "tags" >> .gitignore
+echo "*.o" >> .gitignore
+echo ".*" >> .gitignore
+echo "*.log" >> .gitignore
+echo ".gitignore" >> .gitignore
+
+git add .
+
+git commit -a -m "init version for code studying"
+

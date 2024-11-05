@@ -1,0 +1,20 @@
+
+data_file="perf.data"
+
+[ -f perf-c2c.data ] && data_file="perf-c2c.data"
+
+[ -f perf_c2c.data ] && data_file="perf_c2c.data"
+
+echo "data file is $data_file"
+
+./perf c2c report -NN -c iaddr --full-symbols -i $data_file -k vmlinux > c_$1_c2c.log 
+./perf c2c report  --call-graph none -i $data_file -k vmlinux > s_$1_c2c.log
+
+
+#perf c2c report -NN -c iaddr --full-symbols -i $data_file -k vmlinux --stdio > c_$1_c2c.log 
+#perf c2c report --stdio --call-graph none -i $data_file -k vmlinux > s_$1_c2c.log
+
+
+#perf c2c report -NN -c iaddr --full-symbols -i $data_file --kallsyms kallsyms --stdio > c_$1_c2c.log 
+#perf c2c report --stdio --call-graph none -i $data_file --kallsyms kallsyms > s_$1_c2c.log
+

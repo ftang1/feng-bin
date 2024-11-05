@@ -1,0 +1,14 @@
+month=`date | cut -d" " -f 2`
+day=`date | cut -d" " -f 3`
+
+if [ "$day" == "" ]
+then
+	echo "NULL day info"
+	day=`date | cut -d" " -f 4`
+	echo "new day is $day"
+fi
+
+
+
+repo sync .
+repo start "top-$month$day" .

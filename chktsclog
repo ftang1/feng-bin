@@ -1,0 +1,2 @@
+set -x
+egrep -i "clocksource|tsc|hpet|pm_timer|Refined|calibrate|smpboot" $1

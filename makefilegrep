@@ -1,0 +1,2 @@
+find . -name Makefile | xargs grep $@
+find . -name Makefile.* | xargs grep $@

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -x
+
+if [ `whoami` != "root" ]
+then
+	sd=" sudo -E "
+fi
+
+grep -i -e "debian" -e "ubuntu" /etc/os-release && ti=" apt install "
+#grep -i -e "debian" -e "ubuntu" /etc/os-release && echo "APT\n" && ti=" apt install "
+
+#grep -i -e "fedora" -e "centos" /etc/os-release && echo "YUM\n" && ti=" yum install "
+grep -i -e "fedora" -e "centos" /etc/os-release && ti=" yum install "
+
+$sd $ti $@
+

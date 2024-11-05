@@ -1,0 +1,15 @@
+
+cd /sys/kernel/debug/slab/ || exit
+
+for i in kmalloc*
+do
+	echo >> ~/slab.log
+	echo >> ~/slab.log
+	echo >> ~/slab.log
+	echo "------------------------------" >> ~/slab.log
+	echo $i >> ~/slab.log
+	echo "------------------------------" >> ~/slab.log
+	cat $i/alloc_traces >> ~/slab.log
+done
+
+

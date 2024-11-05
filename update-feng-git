@@ -1,0 +1,20 @@
+#!/bin/bash
+#set -x
+
+cd ~/
+
+for dir in feng-ctests feng-logs feng-patches feng-sh bin
+do
+	cd ~
+	[ -d $dir ] || git clone feng@shbuild999.sh.intel.com:$dir
+
+	echo "---------------------------------------"
+	echo "Updating $dir"
+	echo "---------------------------------------"
+	cd $dir
+	git pull
+
+	echo
+	echo
+done
+

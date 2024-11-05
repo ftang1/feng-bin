@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -x
+
+dfile="perf.data"
+[ -n "$1" ] && dfile="$1" 
+
+#sudo perf report -i $dfile --header -U -g folded,0.5,callee --sort=dso,symbol > perf-profile
+#sudo perf report -i $dfile --header -U -g folded,0.5,callee --sort=dso,symbol > perf-profile
+perf report -i $dfile --header -U -g folded,0.5,callee --sort=dso,symbol > perf-profile

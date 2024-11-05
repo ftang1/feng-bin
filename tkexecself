@@ -1,0 +1,14 @@
+kver=`uname -r`
+echo $kver
+
+[ -n "$1" ] && kver=$1
+
+[ -f /boot/vmlinuz-$kver ] || echo "Error: /boot/vmlinux/vmlinuz-$kver doesn't exist, will quit"
+[ -f /boot/vmlinuz-$kver ] || exit 
+
+#grep -i -e "fedora" -e "centos" /etc/os-release || echo "We only support Red Hat OS for now" 
+#grep -i -e "fedora" -e "centos" /etc/os-release || exit 
+
+kexec -l /boot/vmlinuz-$kver --reuse-cmdline --initrd=/boot/initramfs-$kver.img
+
+kexec -e

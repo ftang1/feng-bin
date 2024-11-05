@@ -1,0 +1,27 @@
+
+nr_cpu=`cat /proc/cpuinfo | grep processor | wc -l`
+
+
+rm -f kernel-compile-test-result.log
+
+function techo()
+{
+	echo $1
+	echo $1 >> kernel-compile-test-result.log
+}
+
+techo "Starting allyesconfig build test:"
+techo "---------------------------------"
+make allyesconfig && make bzImage -j $nr_cpu && techo "allyesconfig build Success!" 
+techo
+
+techo "Starting allmodconfig build test:"
+techo "---------------------------------"
+make allmodconfig && make bzImage -j $nr_cpu && make modules -j $nr_cpu && techo "allmodconfig build success" 
+techo
+
+techo "Starting allnoconfig build test:"
+techo "---------------------------------"
+make allnoconfig && make bzImage -j $nr_cpu && techo "allnoconfig build Success!" 
+techo
+

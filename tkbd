@@ -1,0 +1,4 @@
+
+nr_cpu=`cat /proc/cpuinfo | grep processor | wc -l`
+
+make bzImage -j $nr_cpu && make modules -j $nr_cpu

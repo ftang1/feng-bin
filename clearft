@@ -1,0 +1,2 @@
+set -x
+sudo ~/bin/root_clear_ft

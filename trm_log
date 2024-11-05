@@ -1,0 +1,14 @@
+#set -x
+#echo "will remove all lines with $1"
+#find . -name *.[ch] | xargs sed -i -e '/\$1/d'
+
+[ -z "$2" ] && echo "Usage: trm_log expr file" && exit
+
+echo $1 $2
+grep -v $1 $2 > /dev/shm/tmp.log
+cp /dev/shm/tmp.log $2
+
+#rm -f /dev/shm/tmp.log
+#vi $2
+
+#sed -i -e '''/\$1/d''' $2

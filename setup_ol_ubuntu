@@ -1,0 +1,11 @@
+ apt update
+ apt install sshfs
+ mkdir b9
+ sshfs feng@shbuild999.sh.intel.com: b9
+ cd b9
+ ls
+ cp -r .ssh .vimrc .gitconfig .bashrc bin.tar vim.tar ~/
+
+ cd ~/
+ tar xvf bin.tar
+ tar xvf vim.tar

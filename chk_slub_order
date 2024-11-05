@@ -1,0 +1,6 @@
+if [ `whoami` != "root" ]
+then
+	sd=" sudo -E "
+fi
+
+$sd grep . /sys/kernel/slab/*/order

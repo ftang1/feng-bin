@@ -1,0 +1,2 @@
+sudo cp arch/x86/boot/bzImage /media/e721e2c0-f2d6-432b-ab35-c8e4825fb4e4/boot/ 
+umount /media/e721e2c0-f2d6-432b-ab35-c8e4825fb4e4

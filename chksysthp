@@ -1,0 +1,2 @@
+cd /sys/kernel/mm/transparent_hugepage
+grep . *

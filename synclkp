@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#set -x
+
+pwd=`pwd`
+
+
+echo "------------------"
+echo "Syncing lkp-tests"
+echo "------------------"
+cd ~/lkp/lkp-tests/
+git checkout master
+git pull
+./update
+
+echo
+echo
+
+
+
+echo "------------------"
+echo "Syncing lkp-core"
+echo "------------------"
+cd ~/lkp/lkp-core/
+git checkout master
+git pull
+./update
+
+cd $pwd

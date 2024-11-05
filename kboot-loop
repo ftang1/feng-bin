@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if screen -ls | grep -q serial; then
+	:
+else
+	screen -d -m -S serial -c ~/.screenrc-serial /dev/ttyS0 115200
+fi
+
+while true
+do
+	kboot-run
+	sleep 1s || exit
+done

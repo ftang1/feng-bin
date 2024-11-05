@@ -1,0 +1,1 @@
+sleep 120 && sudo ifconfig eth1 mtu 8192

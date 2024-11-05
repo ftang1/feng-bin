@@ -1,0 +1,4 @@
+for i in *.png
+do
+	eog $i &
+done

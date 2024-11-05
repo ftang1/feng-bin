@@ -1,0 +1,9 @@
+#!/bin/sh
+if [ $# -lt 2 ]; then
+	echo "tdiff Usage: tdiff file1 file2"
+	exit 1
+fi
+
+colordiff -y $1 $2 | more
+
+

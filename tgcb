@@ -1,0 +1,6 @@
+#vi  +"%s/.*{$\n\(.*\n\).*}/\1/g" +"wq" "$1"
+
+# 1. make sure the {} is not in the right start of the lin
+# 2. make sure the there is only some space or tab before the { 
+vi  +"%s/^. *\t*{$\n\(.*;.*\n\)..*}\n/\1/g" +"wq!" "$1"
+#vi  +"%s/^. *\t*{$\n\(.*;.*\n\)..*}/\1/g" +"wq!" "$1"

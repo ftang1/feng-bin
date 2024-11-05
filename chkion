@@ -1,0 +1,35 @@
+#set -x
+sleep_sec=5
+
+if [ "$1" -gt 0 ]
+then
+	sleep_sec=$1
+fi
+
+# $1 == the file want to be show
+catf()
+{
+	if [ -e "$1" ]
+	then
+		cat "$1"
+	fi
+}
+
+while true
+do 
+	echo
+	catf /d/ion/heaps/cma-heap 
+	catf /d/ion/system-heap | grep -v "0 order" 
+	catf /d/ion/secured-heap | grep -v "0 order" 
+	catf /d/ion/cma-heap | grep -v "orphan"
+	cat /proc/vmstat | grep cma
+	echo
+
+	echo -n "Mali mem:"
+	catf  /d/mali/memory_usage
+	catf  /d/mali/pid_memory_usage | grep -v " 0 KB" | grep -v "=======" 
+
+	sleep $sleep_sec 
+done
+
+

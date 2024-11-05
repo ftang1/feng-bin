@@ -1,0 +1,16 @@
+set -x
+
+[ -f "vmlinux" ] || echo "There is no vmlinux in this folder" 
+
+[ -f "vmlinux" ] || exit
+
+logfile="./1.log"
+
+[ -n "$1" ] && logfile=$1
+
+echo "haha"
+
+cat  $logfile | ./scripts/decode_stacktrace.sh  vmlinux
+
+echo "hoho"
+

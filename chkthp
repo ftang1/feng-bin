@@ -1,0 +1,2 @@
+cat /proc/meminfo | grep -i huge
+cat /proc/vmstat | grep thp

@@ -1,0 +1,7 @@
+sed -i -e '/\] ?/d' $1
+sed -i -e '/\]  ?/d' $1
+
+for gab in Code RBP RDX RAX R10 R13 "CS:" "FS:" "DR3:" "DR0:" PKRU
+do
+	trm_log $gab $1
+done

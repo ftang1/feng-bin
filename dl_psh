@@ -1,0 +1,1 @@
+make saltbay && make saltbay A=install && adb reboot

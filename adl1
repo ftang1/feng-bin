@@ -1,0 +1,2 @@
+adb logcat > /home/feng/logcat.log
+

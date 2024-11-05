@@ -1,0 +1,12 @@
+set -x
+fromdos $1
+trm_log wpa_s $1
+trm_log AUD $1
+trm_log KeyGuard $1
+trm_log Keyguard $1
+trm_log cancelBuffer $1
+trm_log EMPTY_BUFFER_DONE $1
+trm_log Thermal $1
+trm_log Context $1
+trm_log InputReader $1
+trm_log dalvikvm $1

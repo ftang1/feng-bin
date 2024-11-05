@@ -1,0 +1,8 @@
+set -x
+#cflasher -f `find . -name flash.json` -c usb_full &
+cflasher -f `find . -name flash.json` -c usb_dev &
+sleep 2
+echo "haah" > /dev/ttyUSB1
+echo "sys set_freq 48" > /dev/ttyUSB1
+sleep 2
+echo "sys reset 0" > /dev/ttyUSB1

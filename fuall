@@ -1,0 +1,12 @@
+set -x
+ls -l firmware || exit
+make image -j 8 || exit
+echo "haha" > /dev/ttyUSB1
+echo "sys set_freq 48" > /dev/ttyUSB1
+sleep 1
+echo "sys reset 0" > /dev/ttyUSB1
+sleep 5
+dfu-util -a x86_app -d 8087:0a99 -R -D firmware/quark.signed.bin
+sleep 4
+dfu-util -a sensor_core -d 8087:0a99 -R -D firmware/arc.bin
+

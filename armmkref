@@ -1,0 +1,51 @@
+#!/bin/sh
+
+rm -f ./tags
+rm -f ./cscope.*
+
+touch cscope.files
+
+add_cs_files () {
+	if [ "$1" = "" ]
+	then
+		dir=.
+	else
+		dir=$1
+	fi
+
+	find $dir -name "*.[chsS]" >> cscope.files
+	find $dir -name "*.asm" >> cscope.files
+	find $dir -name "*.inc" >> cscope.files
+	find $dir -name "*.[ch]xx" >> cscope.files
+}
+
+
+# Making the ctags, we only use x86 for our arch
+if [ -d "./arch/x86/kernel" ]
+then
+	echo "We are in a Linux kernel tree!"
+	for i in `ls`
+	do
+		if [ $i = "arch" ]
+		then
+			echo "Adding ctags for [arch/arm64]"
+			ctags --langmap=Asm:+.inc -R -a arch/arm64/
+
+			add_cs_files arch/arm64
+
+		elif [ -d "$i" ]
+		then
+			echo "Adding ctags for [$i]"
+			ctags --langmap=Asm:+.inc -R -a $i/
+			add_cs_files $i
+
+		fi
+	done
+	echo "Adding ctags job done!"
+else
+	ctags --langmap=Asm:+.inc -R *
+	add_cs_files
+fi
+
+cscope -bkq
+

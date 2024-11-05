@@ -1,0 +1,10 @@
+sysctl -a | grep -e numa -e demotion
+
+ls /sys/kernel/mm/numa/
+grep . /sys/kernel/mm/numa/*
+
+echo "/proc/meminfo"
+cat /proc/meminfo | grep -e migra -e demo
+
+echo "/proc/vmstat"
+cat /proc/vmstat| grep -e migra -e demo

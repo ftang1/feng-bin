@@ -1,0 +1,6 @@
+set -x
+cd /home/feng/ws2/projects/PSH/viper-2.0/
+source setupenv.sh
+cd extAPI/iap/config/projects/midas.1p/
+
+make clean && make lib && echo && echo && make && echo && echo && cp NODE1.bin ~/sshfs/

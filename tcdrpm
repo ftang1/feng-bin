@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo mount -o loop -o offset=512 /home/feng/meego-tablet-ia32-acer-mrst-debug-1.2.0.90.3.20110606.90-sda.bin /home/feng/tmp/
+sudo chroot /home/feng/tmp/

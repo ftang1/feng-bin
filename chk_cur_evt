@@ -1,0 +1,1 @@
+echo "mem read 4 0xa800a770" > /dev/ttyUSB1

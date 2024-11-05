@@ -1,0 +1,11 @@
+
+ISA_VERSION="x86-64-v3"
+
+[ "$1" = "v1" ] && ISA_VERSION="x86-64-v1"
+
+export CFLAGS="$CFLAGS -march=${ISA_VERSION}"
+export CXXFLAGS="$CXXFLAGS -march=${ISA_VERSION}"
+export CPPFLAGS="$CPPFLAGS -march=${ISA_VERSION}"
+export FFLAGS="$FFLAGS -march=${ISA_VERSION}"
+
+echo $CFLAGS

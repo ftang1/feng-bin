@@ -1,0 +1,1 @@
+vi /boot/loader/entries/*`uname -r`*.conf

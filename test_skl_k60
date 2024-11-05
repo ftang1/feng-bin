@@ -1,0 +1,6 @@
+
+set -x
+make bzImage -j 30 || exit
+
+scp arch/x86/boot/bzImage feng-skl:
+ssh feng-skl "sudo cp /home/feng/bzImage /boot/vmlinuz-6.0.0-rc3+  && sudo reboot"

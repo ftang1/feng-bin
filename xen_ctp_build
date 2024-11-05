@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# old scripts
+#cd /home/feng/android/xen_ctp/;
+##source build/envsetup.sh
+#lunch redhookbay-eng
+#make bootimage -j 8 && ssh feng@feng-snb xen_ctp.sh 
+
+cd /home/feng/android/xen/
+source build/envsetup.sh
+lunch redhookbay_xen-eng
+make flashfiles -j 16

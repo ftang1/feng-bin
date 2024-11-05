@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -x
+
+DIR_FLAME="/home/feng/ws2/non-kernel/FlameGraph/"
+
+if [ -d "/home/feng/ws2/non-kernel/FlameGraph" ]
+then
+	mkdir -p /home/feng/ws2/non-kernel/
+	cd /home/feng/ws2/non-kernel/
+	git clone https://github.com/brendangregg/FlameGraph
+fi
+
+cd -
+
+ls /home/feng/new.svg && cp /home/feng/new.svg /home/feng/old.svg
+
+if [ -e "kallsyms" ]
+then
+	perf script --kallsyms=kallsyms | $DIR_FLAME/stackcollapse-perf.pl | $DIR_FLAME/flamegraph.pl > /home/feng/new.svg
+else
+	perf script | $DIR_FLAME/stackcollapse-perf.pl | $DIR_FLAME/flamegraph.pl > /home/feng/new.svg
+fi
+	

@@ -1,0 +1,2 @@
+
+sed -i -e '/wlan/d' -e '/MSM/d' -e '/RPC/d' -e '/wpa_supplicant/d' -e '/80211/d' -e '/wifi/d' -e '/WPA/d' -e '/SSL/d' -e '/EAP/d' -e '/WPS/d' -e '/p2p/d' -e '/P2P/d' -e '/Connectivity/d' $1

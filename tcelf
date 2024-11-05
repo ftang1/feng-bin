@@ -1,0 +1,3 @@
+readelf -a $1 > "$1".readelf.log
+objdump -d $1 > "$1".objdump.log
+grep ">:" "$1".objdump.log > "$1".funclist.log

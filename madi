@@ -1,0 +1,14 @@
+set -x
+
+echo $@
+
+for i in $@
+do
+	echo $i
+	if [ -f "$i" ]
+	then
+		time adb install $i
+	else
+		time adb install "$i".apk
+	fi
+done

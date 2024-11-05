@@ -1,0 +1,9 @@
+#adb shell dmesg > /dev/shm/adb_dmesg.log
+#vi /dev/shm/adb_dmesg.log
+set -x
+
+rm -f ~/.adb_dmesg.log.swp
+tadb shell dmesg > /home/feng/adb_dmesg.log
+fromdos /home/feng/adb_dmesg.log
+clean_sflog /home/feng/adb_dmesg.log
+vi /home/feng/adb_dmesg.log

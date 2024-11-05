@@ -1,0 +1,6 @@
+set -x
+#cd /home/feng/soc6/asus_1527/android/out/target/product/Sf3gr_sr_garnet/fls/fls/
+/home/feng/DownloadTool-asus --cond-erase --library=/home/feng/libDownloadTool.so-asus /home/feng/boot.fls &
+sleep 2
+adb reboot
+

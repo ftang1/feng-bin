@@ -1,0 +1,2 @@
+set -x
+docker run --privileged=true --rm -it $1 /bin/bash

@@ -1,0 +1,3 @@
+set -x
+cd ~/ws2/projects/NDG/atlaspeak
+./out/emulator/emulator_crb.sh -w out/firmware -D2 

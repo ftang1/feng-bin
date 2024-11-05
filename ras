@@ -1,0 +1,5 @@
+readelf -a $1 > /dev/shm/ra.log
+cat /dev/shm/ra.log | sort -k 2 > ~/sort.log
+cp ~/sort.log ./
+vi ~/sort.log
+

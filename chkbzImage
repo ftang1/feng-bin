@@ -1,0 +1,2 @@
+locate -b "bzImage"  | grep -v cmd | xargs ls -l
+ls -lt /boot/vmlinuz*

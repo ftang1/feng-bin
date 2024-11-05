@@ -1,0 +1,1 @@
+grep . /sys/devices/system/cpu/cpu0/cache/*/* | grep -v power | grep -v error

@@ -1,0 +1,25 @@
+#!/bin/bash
+# Kill all process whose name has a $1 inside
+
+if [ "$1" = "" ]
+then
+	echo "Usage: tkill processname (wilecard)!"
+	exit 0
+fi
+
+#list=`ps aux | grep  emulator | awk '{print $2}'`
+list=`ps aux | grep  $1 | awk '{print $2}'`
+
+echo "list is :" $list
+
+#kill -9 $list
+
+# feng: idea case should be just using a command klll -9 $list
+
+for i in $list
+do
+	process=$i
+	echo "killing: " $process
+	kill -9 $process
+	echo "Done"
+done

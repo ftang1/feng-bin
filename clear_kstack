@@ -1,0 +1,15 @@
+trm_log Modules $1
+trm_log "RSP:" $1
+trm_log "RAX:" $1
+trm_log "RDX:" $1
+trm_log "RBP:" $1
+trm_log "R10:" $1
+trm_log "R13:" $1
+trm_log "FS:" $1
+trm_log "CS:" $1
+trm_log "CR2:" $1
+trm_log "DR0:" $1
+trm_log "DR3:" $1
+trm_log "PKRU:" $1
+trm_log "Code:" $1
+trm_log "Hardware" $1

@@ -1,0 +1,9 @@
+if [ `whoami` != "root" ]
+then
+	sd=" sudo -E "
+fi
+
+[ -z "$1" ] && echo "Usage: chk_slub item" && exit
+
+#$sd grep . /sys/kernel/slab/*/order
+$sd grep . /sys/kernel/slab/*/$1

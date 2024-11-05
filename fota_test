@@ -1,0 +1,2 @@
+cd ~/ws2/projects/NDG/panic_atp/wearable_device_sw/packages/intel/iq/tests
+sudo python fota_iq_nominal_test.py -p $1  1.bin ATP1

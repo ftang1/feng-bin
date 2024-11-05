@@ -1,0 +1,5 @@
+set -x
+vmp_stress.sh &
+
+sleep 2
+/home/feng/v48/start_tpa.sh

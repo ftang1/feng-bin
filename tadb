@@ -1,0 +1,28 @@
+#!/bin/bash
+#set -x
+#devices=$(adb devices | grep -w device)
+devices=$(adb devices | grep -w device | cut -f1)
+
+devs=()
+i=0
+for dev in $devices
+do
+	devs[$i]=$dev
+	echo "$i) $dev"
+	i=`expr $i + 1`
+done
+
+if [ $i -eq 1 ]
+then
+	adb $@
+elif [ $i -eq 0 ]
+then
+	echo "No adb device exist!!"
+	exit 1
+else
+	echo -n "which device you want to connect: "
+	read a
+	adb -s ${devs[$a]} $@
+fi
+
+

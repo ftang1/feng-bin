@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -x
+[ -e /tmp/shared/ ] || 9pmount 
+dmesg > /tmp/shared/boot.log
+cat /sys/kernel/debug/tracing/trace > /tmp/shared/ft.log
+sync
+

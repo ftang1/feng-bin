@@ -1,0 +1,9 @@
+
+
+timeout=10
+
+[ -n "$1" ] && timeout=10
+
+echo "timeout is $timeout seconds"
+
+rtcwake -u -s $timeout -m disk 

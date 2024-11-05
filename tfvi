@@ -1,0 +1,51 @@
+#!/bin/bash
+# Author: Feng Tang <feng.tang@intel.com>
+#
+# * New version adding Alek Du's interactive op
+# * use bash to use array[]
+#
+# files=(a b c d e f g h i j k l m n o p q r s t)
+
+# Declare a array
+
+#set -x
+
+if [ -e "$1" ]
+then
+	vi $1 
+	exit
+fi
+
+if [ -e "$2" ]
+then
+	cwd=$2
+else
+	cwd=.
+fi
+
+files=()
+
+#files_name=`find . -name "$1" | sed -e "/.*.o$/d"`
+files_name=`find $cwd -name "$1" | sed -e "/.*.o$/d"`
+
+i=0
+for file in $files_name
+do
+	files[$i]=$file
+	echo "$i) $file"
+	#let "i = $i + 1"
+	i=`expr $i + 1`
+done
+
+if [ $i -eq 1 ]
+then
+	vi ${files[0]}
+elif [ $i -eq 0 ]
+then
+	echo "Can't find file: $1!"
+	exit 1
+else
+	echo -n "which one: "
+	read a
+	vi ${files[$a]} 
+fi

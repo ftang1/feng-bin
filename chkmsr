@@ -1,0 +1,68 @@
+#!/bin/bash
+
+#echo -n "PERF_STS: "
+# rdmsr 0x198
+#
+#echo -n "PERF_CTL: "
+# rdmsr 0x199
+#
+#echo -n "PLATFORM_INFO: "
+# rdmsr 0xCE
+#
+#echo -n "TURBO_RATIO_LIMIT: "
+# rdmsr 0x1ad
+#
+#echo -n "TURBO_RATIO_LIMIT1: "
+# rdmsr 0x1ae
+#
+#echo -n "TURBO_RATIO_LIMIT2: "
+# rdmsr 0x1af
+#
+#echo -n "MISR_ENABLE: "
+# rdmsr 0x1a0
+#
+#echo -n "MPERF: "
+# rdmsr 0xe7
+#
+#echo -n "APERF: "
+# rdmsr 0xe8
+#
+#echo -n "SMI_CNT: "
+# rdmsr 0x34
+#
+#echo -n "TSC: "
+# rdmsr 0x10
+#
+#echo -n "TSC_ADJ: "
+# rdmsr 0x3b
+
+
+# nested array, nice!!
+msr_array=(
+	'PERF_STS	0x198'
+	'PERF_CTL	0x199'
+	'MISR_ENABLE	0x1A0'
+	'SMI_CNT	0x34'
+	'TSC		0x10'
+	'TSC_ADJUST	0x3B'
+	'MPERF		0xE7'
+	'APERF		0xE8'
+	'MISR_ENABLE	0x1A0'
+	'PLAT_INFO	0xCE'
+	'TURBO_RL0	0x1AD'
+	'TURBO_RL1	0x1AE'
+	'TURBO_RL2	0x1AF'
+	'APIC_BASE	0x1B'
+	'FEATURE_CTRL	0x3A'
+)
+
+for item in  "${msr_array[@]}" 
+do
+	msr=($item)
+#	echo -n "${msr[0]}(${msr[1]}): "
+#	printf "%s(%s):\t\t " ${msr[0]}, ${msr[1]}
+
+	str="${msr[0]}(${msr[1]}):"
+	printf "%-24s 0x" $str
+	rdmsr ${msr[1]}
+done

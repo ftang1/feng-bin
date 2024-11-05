@@ -1,0 +1,8 @@
+
+
+while true;
+do
+	cat /d/ion/cma-heap
+	sleep 3
+done
+

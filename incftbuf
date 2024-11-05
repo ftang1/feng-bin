@@ -1,0 +1,1 @@
+echo 10240 > /sys/kernel/debug/tracing/buffer_size_kb

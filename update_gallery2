@@ -1,0 +1,5 @@
+set -x
+adb remount
+adb shell stop
+adb shell start
+adb push /home/feng/b8/android/1022/android/out/target/product/Sf3g_mrd5_p1_512m/system/app/Gallery2.apk /system/app/

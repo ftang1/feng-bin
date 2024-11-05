@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cd ~/bin/ && grep shbuild999 .git/config && git reset --hard HEAD^^^^^^^^^^^ && git pull

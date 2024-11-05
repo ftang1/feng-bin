@@ -1,0 +1,2 @@
+cd /home/feng/android/nordic/psh_fw/
+make nordic && make nordic A=install

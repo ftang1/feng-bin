@@ -1,0 +1,2 @@
+#sudo ifconfig eth0:0 192.168.42.3
+adb connect 192.168.42.1:5555

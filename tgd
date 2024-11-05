@@ -1,0 +1,5 @@
+#!/bin/bash
+set -x
+echo $1
+#find . -name "$1" | xargs git diff
+tfind $1 | xargs git diff

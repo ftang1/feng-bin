@@ -1,0 +1,31 @@
+#!/bin/bash
+
+cd /sys/devices/pci0000:00/0000:00:03.0/testcase/
+
+echo 4096 > mem_size
+
+#define RPB_MEM_ATTR_NONE               0
+#define RPB_MEM_ATTR_DEFAULT            1
+#define RPB_MEM_ATTR_SHARED             2
+#define RPB_MEM_ATTR_MAX                3
+echo 2 > mem_attr
+
+for api in {0..2}
+do
+	echo $api
+	echo $api > dma_api
+
+	for op in {1..2}
+	do
+		echo $op
+		echo $op > mem_op
+		
+		echo "----------------------------------------------"
+		grep . *
+		echo "----------------------------------------------"
+
+		echo 1 > run
+		echo "----------------------------------------------"
+		echo
+	done
+done

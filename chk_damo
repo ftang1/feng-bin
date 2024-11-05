@@ -1,0 +1,2 @@
+grep . /sys/kernel/debug/damon/*
+grep . /sys/module/damon_reclaim/parameters/*

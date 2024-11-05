@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -x
+
+if [ `whoami` != "root" ]
+then
+	sd=" sudo -E "
+fi
+
+grep -i -e "debian" -e "ubuntu" /etc/os-release && ti=" apt-cache search "
+grep -i -e "fedora" -e "centos" /etc/os-release && ti=" yum search "
+
+$sd $ti $@
+

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+files=`tfind $1`
+
+select file in $files
+do
+	break
+done
+
+/home/feng/ws2/projects/NDG/PO/wearable_device_sw/tools/scripts/checkstyle.py -f $file

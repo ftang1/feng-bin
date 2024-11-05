@@ -1,0 +1,14 @@
+#!/bin/bash
+set -x
+
+cd ~/ws2/projects/linux-next/
+
+level=`head Makefile | grep PATCHLEVEL | cut -d' ' -f 3`
+
+#rc=`head Makefile | grep EXTRAVERSION | cut -d' ' -f 2`
+rc=`head Makefile | grep EXTRAVERSION | cut -d' ' -f 3 | cut -c 2- `
+
+echo $rc
+#git-reset --hard v5."$level"-rc1
+git reset --hard v6."$level"-"$rc"
+git pull

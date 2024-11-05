@@ -1,0 +1,4 @@
+sed -i -e '/\] ?/d' $1
+sed -i -e '/\]  ?/d' $1
+sed -i -e '/\] kernel:  ?/d' $1
+sed -i -e '/ubuntu kernel:  ?/d' $1

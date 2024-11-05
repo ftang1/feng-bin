@@ -1,0 +1,9 @@
+while true
+do 
+	cat /d/ion/heaps/cma-heap
+	cat /d/ion/*
+	echo -n "Mali mem:"
+	cat /d/mali/memory_usage
+	cat /d/mali/pid_memory_usage
+	sleep 1
+done

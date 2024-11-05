@@ -1,0 +1,7 @@
+#!/bin/sh
+
+
+#set -x
+ping -c 1 feng-mrb > /dev/null && ssh root@feng-mrb && exit
+#echo $1
+#ssh root@10.239.154.$1

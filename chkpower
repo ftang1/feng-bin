@@ -1,0 +1,24 @@
+#!/bin/bash
+
+echo
+echo "==================================="
+echo		cpufreq
+echo "==================================="
+grep . /sys/devices/system/cpu/cpu3/cpufreq/*
+
+echo
+echo "==================================="
+echo		topology	
+echo "==================================="
+grep . /sys/devices/system/cpu/cpu3/topology/*
+
+echo
+echo "==================================="
+echo		power	
+echo "==================================="
+grep . /sys/devices/system/cpu/cpu3/power/*
+
+#echo "==================================="
+#echo		cpuidle
+#echo "==================================="
+#grep . /sys/devices/system/cpu/cpu3/cpuidle/*/*

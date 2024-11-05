@@ -1,0 +1,5 @@
+
+#readelf -a $1 > /dev/shm/"$1"_ra.log
+#vi /dev/shm/"$1"_ra.log
+readelf -a $1 > /dev/shm/ra.log
+vi /dev/shm/ra.log

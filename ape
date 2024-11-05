@@ -1,0 +1,8 @@
+# adb push exe
+tadb root
+tadb remount
+chmod +x $1
+cd /home/feng/
+tadb push $1 /system/bin/
+tadb shell chmod 777 /system/bin/$1
+

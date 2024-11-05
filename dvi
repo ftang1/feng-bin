@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#new tvi version adding alek's interactive op
+#files=(a b c d e f g h i j k l m n o p q r s t)
+files=()
+files_name=`find ./ -name "$1"`
+i=0
+for file in $files_name
+do
+	files[$i]=$file
+	echo "$i) $file"
+	#let "i = $i + 1"
+	i=`expr $i + 1`
+done
+
+if [ $i -eq 1 ]
+then
+	vi ${files[0]}
+elif [ $i -eq 0 ]
+then
+	echo "Can't find file: $1!"
+	exit 1
+else
+	echo -n "which one? "
+	read a
+	vi ${files[$a]} 
+fi
+
+
+

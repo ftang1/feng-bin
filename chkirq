@@ -1,0 +1,4 @@
+delay=2
+
+[ -n "$1" ] && delay=$1
+watch -d -n $delay cat /proc/interrupts

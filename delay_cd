@@ -1,0 +1,3 @@
+sleep 3  
+echo $TDIR
+enter $TDIR

@@ -1,0 +1,133 @@
+[user]
+name = Feng Tang
+email = feng.tang@intel.com
+[core]
+	editor = vi
+#	gitproxy = /usr/bin/git_proxy_command
+[color]
+	ui = auto
+	diff = true
+	abbrev = 12
+[push]
+	default = current
+[merge]
+	tool = meld
+[sendemail]
+# Samples from intel-linux
+#	smtpserver = smtpauth.intel.com
+#	smtpserverPort = 587
+#	smtpuser = ftang1
+#	smtpencryption = tls
+#	smtpauth = "LOGIN"
+#	smtpsslcertpth = "~/.cert/intel-certchain.crt"
+# End - Samples from intel-linux
+
+	smtpserver = smtp.intel.com
+	smtpserverport = 25
+	chainreplyto = false
+	from = Feng Tang <feng.tang@intel.com> 
+	bcc = feng.tang@intel.com
+	envelope-sender = feng.tang@intel.com 
+	confirm = never 
+	#smtpencryption = tls
+	#smtpssl = yes
+
+[review "http://shsrv888.sh.intel.com:8888"]
+	username = ftang1 
+[review "http://shsrv888.sh.intel.com:29418"]
+	username = ftang1 
+[review "https://mcg-pri-gcr.jf.intel.com:8080"]
+	username = ftang1
+[review "android.intel.com:8080"]
+	username = ftang1
+[review "https://git-ger-5.devtools.intel.com/gerrit"]
+	username = ftang1
+[review "https://android.intel.com"]
+	username = ftang1
+[review "https://git-amr-4.devtools.intel.com:29418"]
+	username = ftang1
+[review "https://git-amr-1.devtools.intel.com:29418"]
+	username = ftang1
+[review "ssh://git-amr-1.devtools.intel.com:29418"]
+	username = ftang1
+
+[review "ssh://gitlab.devtools.intel.com:29418"]
+	username = ftang1
+
+[review "https://github.com/"]
+	username = ftang1
+
+[review "https://github.com/intel-innersource"]
+	username = ftang1
+#setup the ssh access of the mirror when downloading manifests or updating repo
+#[url "ssh://shlabacsbb06.sh.intel.com/"]
+#[url "ssh://jfumg-gcrmirror.jf.intel.com/"]
+#	insteadOf=git://android.intel.com/
+
+#[url "ssh://mcg-psi-gcr-glb.sh.intel.com"]
+#	insteadOf = "git://jfumg-gcrmirror.jf.intel.com"
+
+#[url "ssh://mcg-psi-gcr-glb.sh.intel.com"]
+#	insteadOf = "ssh://jfumg-gcrmirror.jf.intel.com"
+
+#[url "ssh://mcg-psi-gcr-glb.sh.intel.com"]
+#	insteadOf = "ssh://android.intel.com"
+
+#[url "ssh://mcg-psi-gcr-glb.sh.intel.com"]
+#	insteadOf = "git://android.intel.com"
+
+
+[url "ssh://ftang1@android.intel.com:29418/"]
+	pushInsteadOf=ssh://android.intel.com/
+	pushInsteadOf=ssh://android.intel.com:29418/
+	pushInsteadOf=ssh://jfumg-gcrmirror.jf.intel.com/
+	pushInsteadOf=ssh://jfumg-gcrmirror.jf.intel.com:29418/
+	pushInsteadOf=ssh://android-mirror.devtools.intel.com/
+	pushInsteadOf=ssh://android-mirror.devtools.intel.com:29418/
+	pushInsteadOf=ssh://android-mirror-or.devtools.intel.com/
+	pushInsteadOf=ssh://android-mirror-or.devtools.intel.com:29418/
+
+[url "ssh://android-mirror-sh.devtools.intel.com"]
+	#[url "ssh://android.intel.com"]
+	insteadOf = "git://jfumg-gcrmirror.jf.intel.com"
+	insteadOf = "ssh://jfumg-gcrmirror.jf.intel.com"
+	insteadOf = "git://android.intel.com"
+	insteadOf = "ssh://android.intel.com"
+	insteadOf = "git://jfumgrepo1.jf.intel.com"
+	insteadOf = "ssh://jfumgrepo1.jf.intel.com"
+	insteadOf = "ssh://android-mirror.devtools.intel.com" 
+
+##[url "ssh://ftang1@android-mirror-sh.devtools.intel.com:29418/"]
+#	insteadOf=git://android.intel.com/
+#	insteadOf=ssh://android.intel.com/
+#	insteadOf=ssh://android.intel.com:29418/
+#	insteadOf=git://android-mirror-or.devtools.intel.com/
+#	insteadOf=ssh://android-mirror-or.devtools.intel.com/
+#	insteadOf=ssh://android-mirror-or.devtools.intel.com:29418/
+#	insteadOf=git://android-mirror.devtools.intel.com/
+#	insteadOf=ssh://android-mirror.devtools.intel.com/
+#	insteadOf=ssh://android-mirror.devtools.intel.com:29418/
+#	insteadOf=git://jfumg-gcrmirror.jf.intel.com/
+
+
+[url "ssh://ftang1@git-ger-8.devtools.intel.com:29418/"]
+	insteadOf=ssh://git-ger-8.devtools.intel.com/
+	insteadOf=ssh://git-ger-8.devtools.intel.com:29418/
+	insteadOf=git://git-ger-8.devtools.intel.com/
+
+[url "ssh://ftang1@git-amr-4.devtools.intel.com:29418/"] 
+	insteadOf=ssh://git-amr-4.devtools.intel.com:29418/
+	insteadOf=ssh://git-amr-4.devtools.intel.com/
+	insteadOf=git://git-amr-4.devtools.intel.com/
+
+
+
+#[url "ssh://ftang1@ftang1@ubit-artifactory-ba.intel.com:29418/"]
+#	insteadOf=https://ubit-artifactory-ba.intel.com/
+
+[http]
+	proxy = http://child-prc.intel.com:913
+[pull]
+	ff = only
+[diff]
+	algorithm = patience

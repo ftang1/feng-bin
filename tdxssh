@@ -1,0 +1,7 @@
+port=`netstat -an | grep LISTEN | grep 1002 | cut -d':' -f 2 | cut -d' ' -f 1`
+
+echo $port
+
+[ -z $port ] && echo "Can't find the VM SSH port!" && exit
+
+[ -n $port ] && ssh root@127.0.0.1 -p $port

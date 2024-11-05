@@ -1,0 +1,10 @@
+#!/bin/bash
+def_loops=2000
+
+for i in `seq 1 $def_loops`
+do
+#	($1 $2 $3 $4)
+	$@
+	sleep 5 
+done
+

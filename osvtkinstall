@@ -1,0 +1,20 @@
+#!/bin/sh
+#make -j $(grep -c processor /proc/cpuinfo)
+
+if [ `whoami` != "root" ]
+then
+	sd=" sudo -E "
+fi
+
+# Ubuntu modules could be too huge for initrd
+grep -i -e "debian" -e "ubuntu" /etc/os-release && strip_opt=" INSTALL_MOD_STRIP=1 "
+
+sudo rm -rf /boot/*rc4-osv*; sudo rm -rf /lib/modules/*rc4-osv*
+
+#[ -f "vmlinux" ] && tkbd && $sd make $strip_opt modules_install && $sd make install
+[ -d "arch/x86" ] && tkbd && $sd make $strip_opt modules_install && $sd make install
+
+
+
+
+#sudo update-initramfs -c -k $1

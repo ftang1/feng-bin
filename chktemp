@@ -1,0 +1,2 @@
+which sensors || sudo apt-get install lm-sensors
+watch -d -n 2 sensors

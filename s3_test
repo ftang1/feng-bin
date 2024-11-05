@@ -1,0 +1,7 @@
+
+s3_time=5
+
+[ -n "$1" ] && s3_time=$1
+
+rtcwake -m mem -s $s3_time
+

@@ -1,0 +1,2 @@
+scp $2 $3 $4 $5 lkp-os:
+ssh lkp-os "scp $2 $3 $4 $5 $1:"

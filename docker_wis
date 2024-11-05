@@ -1,0 +1,80 @@
+
+#set -x
+
+NR_CNTER=64
+
+case="page_fault1"
+
+mode="processes"
+
+runtime=300
+
+[ -n "$1" ] && NR_CNTER=$1 && echo "nr_containers = $1"
+[ -n "$2" ] && case=$2 && echo "case = $2"
+[ -n "$3" ] && mode=$3 && echo "mode = $3"
+[ -n "$4" ] && nr_jobs=$4 && echo "jobs = $4"
+[ -n "$5" ] && runtime=$4 && echo "runtime = $5"
+
+testcase="$case"_"$mode"
+
+echo "Final wis case is [$testcase]"
+
+#exit
+
+for ((i=0; i<$NR_CNTER; i++))
+do
+        docker run --privileged=true --rm 5668af921c2f  bash -c " sleep 7200" &
+done
+
+#sleep 15  #wait all container ready. 
+sleep 5  #wait all container ready. 
+
+docker ps
+
+sleep 3
+
+
+# don't use '-it' option
+# for i in `docker ps | sed '1 d' | awk '{print $1 }'` ;do docker exec --privileged=true $i bash -c "cd /root/will-it-scale/; ./page_fault1_processes -t 12 -s 300" & done
+# "-n" option means no "affinity"
+for i in `docker ps | sed '1 d' | awk '{print $1 }'` ;do docker exec --privileged=true $i bash -c "cd /root/will-it-scale/; ./"$testcase" -n -t "$nr_jobs" -s "$runtime" " & done
+
+# wait till all docker are basically ready
+sleep 120 
+
+cd /dev/shm/
+
+echo "recording perf data"
+
+docker ps | wc -l
+
+sudo perf record -o $NR_CNTER-wis.perf.data -ag sleep 4 
+
+sleep 30
+
+echo "recording perf-c2c data"
+
+sudo perf c2c record -o $NR_CNTER-wis.perf-c2c.data -ag sleep 4 
+
+sudo cp $NR_CNTER-wis.perf-c2c.data perf-c2c.data
+
+sudo chown feng *.data
+
+
+data_dir=~/docker-perf/wis/"$testcase"-"$NR_CNTER"-"$nr_jobs"
+
+mkdir -p $data_dir 
+
+cp "$NR_CNTER"-*.data "$data_dir"/ 
+
+cd $data_dir
+/usr/bin/gen_c2c_log
+
+# check kbuild result
+
+#for i in `docker ps | sed '1 d' | awk '{print $1 }'` ;do echo $i; docker exec --privileged=true $i bash -c "ls -l /root/linux-2.6/vmlinux;"  done
+
+
+#show testing result for all
+#for i in `docker ps | sed '1 d' | awk '{print $1 }'` ;do echo === $i ===; docker exec $i bash -c 'cat /tmp/vm-scalability-tmp/dd-output-* '  & done
+#for i in `docker ps | sed '1 d' | awk '{print $1 }'` ;do echo === $i ===; docker exec $i bash -c 'cat /tmp/vm-scalability-tmp/dd-output-* '  & done | grep MB | awk 'BEGIN {a=0;} { a+=$8} END {print NR, a/(NR)}'

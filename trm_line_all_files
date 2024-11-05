@@ -1,0 +1,8 @@
+set -x
+
+echo "will remove all lines with $1"
+
+# find . -name *.[ch] | xargs sed -i -e "/\$1/d"
+# doesn't work
+
+find . -name *.[ch] | xargs sed -i -e "/"$1"/d"

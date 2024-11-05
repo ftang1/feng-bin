@@ -1,0 +1,2 @@
+readelf -a $1 > /home/feng/ra.log;
+vi /home/feng/ra.log

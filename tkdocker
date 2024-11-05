@@ -1,0 +1,2 @@
+for i in `docker ps | cut -d' ' -f 1 | grep -v CONTAIN`; do docker kill $i; done
+

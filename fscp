@@ -1,0 +1,9 @@
+#!/bin/bash
+set -x
+
+if [ !"$2" ]
+then
+#	scp -r $1 root@10.239.154."$2":
+	scp -r $1 root@feng-mrb:
+fi
+

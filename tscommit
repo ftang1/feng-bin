@@ -1,0 +1,6 @@
+[ -n $1 ] || exit
+
+cd ~/ws2/projects/linux-2.6 && git-show $1 > /dev/null && echo "in dir linux-2.6"  && sleep 3 && git-show $1 && exit
+
+
+cd ~/ws2/projects/linux-next && git-show $1 || exit

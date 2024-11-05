@@ -1,0 +1,25 @@
+#!/bin/sh
+#if [ $# -lt 2 ]; then
+#	echo "ivi_reboot Usage: ivi_reboot ip [directory] !!!"
+#	exit 1
+#fi
+
+if [ ! -e "$2" ]
+then
+	echo '$2 is NULL'
+	cwd=.
+else
+	echo "\$2 is $2"
+	cwd=$2
+fi
+
+#scp $cwd/arch/x86/boot/bzImage root@10.239.97.$1:/boot/extlinux/
+#scp $cwd/arch/x86/boot/bzImage root@$1:/boot/extlinux/
+#ssh root@$1 reboot
+
+cvlip="10.239.97.$1"
+echo "usage: iscp ipaddr filename"
+echo $cvlip   $2
+scp -r $2  $3 $4 $5 $6 $7 root@$cvlip:
+
+

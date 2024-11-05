@@ -1,0 +1,17 @@
+set -x
+
+[ -n "$1" ] || echo "usage: tgitreset commit"
+[ -n "$1" ] || exit
+
+commit=$1
+
+git diff $1 > tmmp.patch
+
+patch -p1 -R < tmmp.patch
+
+git commit -a -m "reset to $1"
+
+
+
+
+

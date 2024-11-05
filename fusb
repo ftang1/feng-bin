@@ -1,0 +1,6 @@
+set -x
+make flash FLASH_CONFIG=usb_x86_apps &
+sleep 5
+echo "sys reset 0 " > /dev/ttyUSB1
+
+

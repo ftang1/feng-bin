@@ -1,0 +1,31 @@
+#!/bin/bash
+
+
+if [ -n "$1" ]; then
+
+	cp $1 "$1".raw
+	sed -i -e 's/perf-profile/pp/' $1
+	sed -i -e 's/cycles-pp\.//' $1
+	sed -i -e 's/latency_stats/lats/' $1
+	sed -i -e 's/calltrace/bt/' $1
+	sed -i -e 's/children/child/' $1
+
+	# further simply the result
+	if [ -n "$2" ]; then
+#		sed -i -e '/\<interrupts\>/d' $1
+		sed -i -e "/interrupts\.CPU/d" $1
+		sed -i -e "/interrupts\.[0-9]/d" $1
+		sed -i -e '/\<slabinfo\>/d' $1
+#		sed -i -e '/\<softirqs\>/d' $1
+		sed -i -e '/softirqs\.CPU/d' $1
+		sed -i -e '/\<sched_debug\>/d' $1
+		sed -i -e '/\<numa-vmstat\>/d' $1
+		sed -i -e '/\<numa-meminfo\>/d' $1
+		# turbo stat is kind of important in many cases
+#		sed -i -e '/\<turbostat\>/d' $1
+		sed -i -e '/\<iostat\>/d' $1
+		sed -i -e '/\<meminfo\>/d' $1
+		sed -i -e '/\<lats\>/d' $1
+		sed -i -e '/\<boot-time\>/d' $1
+	fi
+fi

@@ -1,0 +1,12 @@
+echo 0 > /sys/kernel/debug/tracing/tracing_on
+echo "$1" > /sys/kernel/debug/tracing/set_graph_function
+echo function_graph > /sys/kernel/debug/tracing/current_tracer
+echo funcgraph-proc > /sys/kernel/debug/tracing/trace_options
+echo nosleep-time > /sys/kernel/debug/tracing/trace_options
+#echo funcgraph-tail > /sys/kernel/debug/tracing/trace_options
+echo 1 > /sys/kernel/debug/tracing/tracing_on
+echo "recording graph ftrace info"
+sleep 8
+cat /sys/kernel/debug/tracing/trace > /dev/shm/"$1"_ftrace.log
+echo 0 > /sys/kernel/debug/tracing/tracing_on
+vi /dev/shm/"$1"_ftrace.log

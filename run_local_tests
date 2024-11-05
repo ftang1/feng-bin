@@ -1,0 +1,14 @@
+
+
+echo -n "Current working folder is: "
+pwd
+
+for i in *
+do
+	[ -x $i ] || continue
+	echo "Runing $i"
+	./$i
+	echo
+	echo
+done
+

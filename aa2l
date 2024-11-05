@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -x
+
+echo haha
+
+#arcelf=`find . -name arc.elf`
+arcelf=$((find . -name arc.elf))
+
+echo $arcelf

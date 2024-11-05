@@ -1,0 +1,2 @@
+cd ~/ws2/projects/$1
+make bzImage -j 28

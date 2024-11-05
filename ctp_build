@@ -1,0 +1,5 @@
+#!/bin/bash
+cd /home/feng/android/ww02/;
+source build/envsetup.sh
+lunch redhookbay-eng
+make bootimage -j 8 && cp out/target/product/redhookbay/boot.bin . && flash_kernel.sh

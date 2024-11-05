@@ -1,0 +1,19 @@
+#!/bin/bash
+
+for dir in `ls -d bee*`
+do
+#	echo -n "pwd:"
+#	pwd
+#	echo "dir: " $dir
+#
+#	[ -d "$dir" ] && cd $dir && [ -d ".git" ] && echo $dir && git-branch | grep "*" && echo
+#	[ -d "$dir" ] && cd $dir && [ -d ".git" ] && echo $dir && git-branch  && echo && cd ..
+	[ -d "$dir" ] && [ -d "$dir/.git" ] && cd $dir && echo $dir && git branch | grep "*"  && echo && cd ..
+	
+#	echo -n "pwd:"
+#	pwd
+
+#	git-branch | grep "*"
+done
+
+

@@ -1,0 +1,7 @@
+#adb push VID_20141104_101226.3gp /storage/sdcard0/Movies/
+set -x
+echo $@
+for i in `echo $@`
+do
+	adb push $i /storage/sdcard0/Music/
+done

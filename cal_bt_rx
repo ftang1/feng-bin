@@ -1,0 +1,14 @@
+
+sleep_time=10
+
+old=$(adb shell cat /proc/tty/driver/MFD* | grep bt | cut -d' ' -f6 | cut -d: -f2)
+sleep $sleep_time
+new=$(adb shell cat /proc/tty/driver/MFD* | grep bt | cut -d' ' -f6 | cut -d: -f2)
+
+echo "old =" $old "new =" $new "sleep_time =" $sleep_time "seconds"
+
+let delta=new-old
+
+let speed_kb=(new-old)/sleep_time/1000
+
+echo "RX speed =" $speed_kb "KBytes/sec"

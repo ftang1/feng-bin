@@ -1,0 +1,12 @@
+#!/bin/bash
+set -x
+[ -f vmlinux ] || echo "we need vmlinux"
+[ -f vmlinux ] || exit
+
+[ ! -d "scripts" ] &&  echo "we need be in a kernel source tree"  &&
+#[ ! -d "scripts" ] &&  echo "we need be in a kernel source tree"  &&
+#[ -d "scripts" ] ||  exit
+
+[ -z "$1" ] && echo "Usage: tdecstack stack-dump.log"  && exit
+
+./scripts/decode_stacktrace.sh vmlinux < $1 > dec-$1.log

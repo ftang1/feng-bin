@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -x
+echo $?
+echo $@
+
+[ -z "$1" ] && echo "Usage: tftcmd func [cmd]" && exit
+
+echo 0 > /sys/kernel/debug/tracing/tracing_on
+
+echo 10240 > /sys/kernel/debug/tracing/buffer_size_kb
+
+trace-cmd start -p function_graph -g "$1" 
+
+if [ -n "$2" ]; then
+	"$2"
+else
+	echo "will sleep for 10 seconds"
+	sleep 10
+fi
+
+trace-cmd stop
+cat /sys/kernel/debug/tracing/trace
+

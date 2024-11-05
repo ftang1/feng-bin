@@ -1,0 +1,18 @@
+#set -x
+sleep_sec=5
+
+if [ "$1" -gt 0 ]
+then
+	sleep_sec=$1
+fi
+
+
+while true
+	do cat /proc/meminfo | grep -e MemFree -e MemTotal -e SwapTotal -e SwapFree -e SwapCache -e file -e anon -e Shmem
+#	cat /proc/buddyinfo | grep Normal
+	cat /proc/pagetypeinfo | grep -e CMA -e Movable | grep -v Reserve
+	cat /proc/vmstat | grep cma
+	[ -f "/d/mali/gpu_memory" ] && cat /d/mali/gpu_memory | grep Mali
+	sleep $sleep_sec 
+	echo ==============
+done

@@ -1,0 +1,4 @@
+gcc -c -Q -march=x86-64-v4 --help=target > gcc-isa-v4.log
+gcc -c -Q -march=x86-64-v3 --help=target > gcc-isa-v3.log
+gcc -c -Q -march=x86-64-v2 --help=target > gcc-isa-v2.log
+gcc -c -Q -march=native --help=target > gcc-isa-native.log

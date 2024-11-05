@@ -1,0 +1,1 @@
+for i in `tfind *.c`; do tgcb $i; echo $i; done

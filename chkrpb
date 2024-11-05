@@ -1,0 +1,1 @@
+lspci | grep --color 0d52

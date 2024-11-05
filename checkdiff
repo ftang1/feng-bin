@@ -1,0 +1,4 @@
+#!/bin/sh
+git diff HEAD > ~/1.diff
+/home/feng/ws2/projects/linux-2.6/scripts/checkpatch.pl ~/1.diff
+

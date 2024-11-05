@@ -1,0 +1,2 @@
+sudo dmesg | grep "()" > /dev/shm/dmf.log
+vi /dev/shm/dmf.log

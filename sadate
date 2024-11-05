@@ -1,0 +1,5 @@
+echo -n "phone OS time: " 
+ssh feng-snb adb shell date
+echo -n "phone hwclock: " 
+ssh feng-snb adb shell hwclock 
+ssh feng-snb adb shell uptime

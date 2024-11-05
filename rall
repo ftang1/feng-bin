@@ -1,0 +1,27 @@
+#!/bin/bash
+
+a=`tfind quark.elf`
+readelf -a $a > quark.log
+/home/feng/ws2/projects/NDG/PO/wearable_device_sw/external/toolchain/tools/compiler/gcc-ia/5.2.1/i586-intel-elfiamcu/bin/objdump -dS $a > quark.od
+
+a=`tfind arc.elf`
+readelf -a $a > arc.log
+/home/feng/ws2/projects/NDG/PO/wearable_device_sw/external/toolchain/tools/compiler/gcc-arc/4.8.5/arc-elf32/bin/objdump -dS $a > arc.od
+#/home/feng/ws2/projects/NDG/PO/wearable_device_sw/external/gcc-arm/bin/arm-none-eabi-objdump -dS $a > arc.od
+
+a=`tfind image.elf`
+readelf -a $a > ble.log
+/home/feng/ws2/projects/NDG/PO/wearable_device_sw/external/toolchain/tools/compiler/gcc-arc/4.8.5/arc-elf32/bin/objdump -dS $a > ble.od
+
+a=`tfind fsbl.elf`
+readelf -a $a > fsbl.log
+/home/feng/ws2/projects/NDG/PO/wearable_device_sw/external/toolchain/tools/compiler/gcc-ia/5.2.1/i586-intel-elfiamcu/bin/objdump -dS $a > fsbl.od
+
+a=`tfind ssbl.elf`
+readelf -a $a > ssbl.log
+/home/feng/ws2/projects/NDG/PO/wearable_device_sw/external/toolchain/tools/compiler/gcc-ia/5.2.1/i586-intel-elfiamcu/bin/objdump -dS $a > ssbl.od
+
+#alias aobjdump='arm-none-eabi-objdump'
+#alias atpod='/home/feng/ws2/projects/NDG/PO/wearable_device_sw/external/toolchain/tools/compiler/gcc-ia/5.2.1/i586-intel-elfiamcu/bin/objdump'
+
+

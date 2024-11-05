@@ -1,0 +1,2 @@
+find . -name Kconfig | xargs grep $@
+find . -name Kconfig.* | xargs grep $@

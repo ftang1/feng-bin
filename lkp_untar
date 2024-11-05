@@ -1,0 +1,2 @@
+unxz *.xz
+gunzip *.gz

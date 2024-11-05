@@ -1,0 +1,2 @@
+
+sudo watch -d 'cat /proc/pagetypeinfo'

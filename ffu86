@@ -1,0 +1,3 @@
+ls -l firmware || exit
+dfu-util -a x86_app -d 8087:0a99 -R -D firmware/quark.signed.bin
+

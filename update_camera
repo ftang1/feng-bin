@@ -1,0 +1,4 @@
+set -x
+#scp shbuild555.sh.intel.com:camera.sofia3g.so . && scp shbuild555.sh.intel.com:gralloc.sofia3g.so . && adb remount && adb push camera.sofia3g.so /system/lib/hw/ && adb push gralloc.sofia3g.so /system/lib/hw/ && adb reboot
+
+adb remount && adb push camera.sofia3g.so /system/lib/hw/ && adb push gralloc.sofia3g.so /system/lib/hw/ && adb reboot

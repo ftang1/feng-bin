@@ -1,0 +1,2 @@
+echo "i2c write i2c1 30 10 40 00 6b 80 a1 01 e0 0c 40 00 d8 00 a0 07 e2 00 40 00 00 80 89 e0 0c a0 0d e1 00 40 00 d8 00" > /dev/ttyUSB1
+

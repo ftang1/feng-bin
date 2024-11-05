@@ -1,0 +1,17 @@
+yum config-manager --set-enabled crb
+yum -y install epel-release
+yum install yum-utils
+yum-builddep glibc
+yumdownloader --source glibc
+
+yum install -y git ctags cmake dstat htop fuse-sshfs vim mlocate bc binutils-devel libunwind-devel numactl-devel perl-devel perl slang-devel
+
+mkdir b9
+sshfs feng@shbuild999.sh.intel.com: b9
+
+cp -r b9/bin b9/.vimrc b9/.bashrc b9/.vim ~/
+
+mkdir clx
+sshfs feng@feng-clx.sh.intel.com: clx
+
+

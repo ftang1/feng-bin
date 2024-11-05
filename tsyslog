@@ -1,0 +1,3 @@
+sudo /etc/init.d/sysklogd stop
+sudo mount -t tmpfs log /var/log/
+sudo /etc/init.d/sysklogd start
