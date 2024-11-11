@@ -1,0 +1,231 @@
+# About Me
+set from="feng.tang@intel.com"
+set realname="Feng Tang"
+
+# IMAP
+set imap_user="feng.tang@intel.com"
+set imap_login="${imap_user}"
+set imap_authenticators="xoauth2"
+set imap_oauth_refresh_command="~/mutt/contrib/mutt_oauth2.py /root/mutt/${imap_user}.tokens"
+#set imap_oauth_refresh_command="~/mutt/contrib/mutt_oauth2.py /root/${imap_user}.tokens"
+
+#SMTP
+set smtp_url="smtp://${imap_user}@smtp.office365.com:587/"
+set smtp_authenticators="${imap_authenticators}"
+set smtp_oauth_refresh_command="${imap_oauth_refresh_command}"
+    
+# My mailboxes
+set folder="imaps://outlook.office365.com/"
+set spoolfile="+INBOX"
+#set spoolfile="+INBOX +Drafts"
+    
+# Where to put the stuff
+set message_cachedir="~/.mutt/cache/bodies"
+set certificate_file="~/.mutt/certificates"
+
+
+# Mail Folder
+#set folder = ~/Mail              	# Directory that contains all mail files (mailboxes)
+set spoolfile = +inbox           	# Default spoolfile
+set mbox = +archive/inbox         	# Where mail is appended to from spoolfile
+set mbox_type = mbox             	# Type of mail files
+#set postponed = +log/postponed		# Where to save postponed mail
+set copy = yes                   	# Save copies of outgoing mail?
+#set record = +archive/outbox     	# Where to save copies of outgoing mail
+set record = ~/Mail/Sent
+
+# copy Guanqun's setting
+set mbox_type = Maildir
+
+my_hdr Bcc: feng.tang@intel.com
+
+#set folder = "/home/feng/Mail"
+#set mbox = "/home/feng/Mail/inbox/"
+#set spoolfile="/home/feng/Mail/inbox/"
+#set record="=sent"
+#set postponed="=drafts"
+
+auto_view text/html application/msword
+
+
+#set sidebar_visible
+#set sidebar_short_path
+#set sidebar_folder_indent
+#set sidebar_width = 25
+#set sidebar_divider_char = ' | '
+#set sidebar_indent_string = "  "
+#set sidebar_format = "%B %* [%?N?%N / ?%S]"
+
+
+# # Mailboxes to show in the sidebar.
+#mailboxes "====Remote==="
+#mailboxes +ArchiveBox
+#mailboxes +INBOX
+#mailboxes +To\ Me +From\ Gordon +From\ Heng +SSP\ Virtualization\ QA +linux-tdx +SSE\ CLK\ QA +SSE\ Linux\ QA +Jira +"linux-drivers-review@eclists" +intel-linux-request@eclists +kvm-tdx@eclists
+#mailboxes +SENT
+#mailboxes +DRAFT
+
+
+#add by Feng
+#set sendmail="/usr/bin/msmtp"
+set realname="Feng Tang"
+set from="Feng Tang <feng.tang@intel.com>" 
+set use_from=yes
+
+set sort_aux = last-date-received
+set sort = threads
+
+
+folder-hook . set sort = threads
+folder-hook +inbox set sort = threads
+folder-hook +archive/outbox set sort = reverse-date
+
+# feng's own setting
+set quit=ask-yes
+
+# Address book
+set query_command = "lbdbq '%s'"
+#set query_command="abook --mutt-query '%s'"
+#macro pager A |'abook --add-email'\n
+
+# View/Edit Options
+
+auto_view text/html	#if there is only html dump that
+alternative_order text/plain text/html	# this helps with multipart messages
+
+unset auto_tag
+unset confirmappend     # Don't ask me if I want to save a message
+unset mark_old          # Don't mark unread messages "old"
+unset collapse_unread   # If a thread has an unread msg, don't collapse
+set pager_context = 1
+
+set delete              # delete without comfirmation
+set fast_reply
+set edit_headers
+
+set include
+set move = no
+set quote_regexp = "^( {0,4}[>|:#]| {0,4}[a-z0-9]+[>|]+)+"
+set editor = "/usr/bin/vim +10"
+#  set editor = "vim +/^$ ++1 -c 'set tw=76 expandtab nosmartindent'"
+set ispell = "aspell -e -c"
+set forward_format="Fwd: %s"
+
+# forward a message including attachments
+set mime_forward = "ask-no"
+set mime_forward_decode
+set mime_forward_rest
+
+# Language options
+#  set strict_mime = no
+charset-hook x-gbk  gbk
+charset-hook gb2312 gbk
+charset-hook GB2312 gbk
+charset-hook GBK    gbk
+charset-hook Windows-1252    gbk
+set rfc2047_parameters = yes
+#  set charset=utf-8
+set ascii_chars = yes
+set assumed_charset = "gbk:utf-8"
+#  set locale = "zh_CN.GBK"
+set charset = UTF-8 # cannot believe this is required under utf8 environment - fengguang
+#  set attach_charset = "us-ascii:utf-8:gbk"
+set send_charset = "us-ascii:utf-8:gbk"
+#  set send_charset = "us-ascii:gbk" # use this if some clients cannot understand utf8
+
+send-hook '(@ustc\.edu\.cn|@mail\.ustc\.edu\.cn|@ustc\.edu)' "set send_charset = 'gb2312'"
+
+# Aliases (address book)
+set alias_file = ~/.mutt/aliases
+set sort_alias = alias  # Sort aliases by alias name not email address
+
+# use my alias for them, not their from name
+set reverse_alias       # Show real name instead of e-mail address in index
+# reply with the same recipient name/address...
+set reverse_name
+# ... but use my defined name in reverse setting
+set reverse_realname = no
+
+set abort_nosubject = no
+set abort_unmodified = no
+set postpone = ask-yes
+set recall = no # I'd prefer explict recall with R
+
+## ======================================================================
+## Format Strings:
+## ======================================================================
+set index_format = "%4C %Z %{%b %d} %-15.15F (%?l?%4l&%4c?:%X) %s"
+
+
+# Other settings from internet
+set wait_key=yes
+set pager_context=1
+set pager_index_lines=16
+set record="~/Mail/sentmail/=`date +%Y-%m`"
+
+set header_cache="~/Mail/.header_cache/"
+set maildir_header_cache_verify=no
+
+# Prune the headers!
+ignore *
+unignore From:
+unignore To:
+unignore Subject:
+unignore Date:
+unignore CC:
+unignore user-agent x-mailer
+hdr_order Subject: From: To: Cc: user-agent x-mailer Date:
+
+# Key bindings
+bind    generic <home>  first-entry
+bind    generic <end>   last-entry
+bind    pager   <up>    previous-line
+bind    pager   <down>  next-line
+bind    pager   <left>  previous-entry
+bind    pager   <right> next-entry
+bind    pager   <home>  top
+bind    pager   <end>   bottom
+
+# Colors
+color normal     white         default
+color attachment brightyellow  default
+color hdrdefault cyan          default
+color indicator  default       cyan
+color markers    brightred     default
+color status     brightgreen   blue
+color tilde      blue          default
+color tree       red           default
+color signature  cyan          default
+
+color quoted           blue             default
+color quoted1          magenta          default
+color quoted2          red              default
+color quoted3          green            default
+color quoted4          cyan             default
+color quoted5          blue             default
+color quoted6          magenta          default
+color quoted7          red              default
+
+# spamassassin integration
+# spamassassin report and classify as spam
+macro index S "|/usr/bin/spamassassin -r"
+# spamassassin classify as ham
+macro index H "|/usr/bin/sa-learn --ham  --no-sync"
+# rebuild the spamassassin bayes filter db
+#  macro index R "!/usr/bin/sa-learn --sync"
+
+# folder browser
+macro pager c '<change-folder>?<toggle-mailboxes>'
+macro index c '<change-folder>?<toggle-mailboxes>'
+
+macro index G "!/usr/bin/getmail"
+
+set sort_browser = reverse-date
+
+# macro for change multiple patches to mboxes
+macro index \Ch '<pipe-entry>/home/feng/Mail/frommutt' "output git patches"
+
+set fcc_clear
+
+auto_view text/html
+alternative_order text/enriched text/plain text text/html
